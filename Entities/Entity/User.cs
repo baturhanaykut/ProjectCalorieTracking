@@ -22,5 +22,7 @@ namespace Entities.Entity
         public decimal UserHeight { get; set; }
         public Gender UserGender { get; set; }
         public List<MealsAndUsers> Meals { get; set; }
+
+        // Ahmet Deneme Yapıldı.
     }
 }
