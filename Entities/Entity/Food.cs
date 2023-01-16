@@ -18,7 +18,11 @@ namespace Entities.Entity
         public decimal Amount { get; set; }
         public int CategoryId { get; set; }
 
+        
         //Navigation
         public Category Category { get; set; }
+
+        public List<MealsAndFoods> Meals { get; set; }
+
     }
 }

@@ -13,6 +13,21 @@ namespace DAL.Mapping
     {
         public void Configure(EntityTypeBuilder<Meal> builder)
         {
+            builder.ToTable("Meals");
+
+            builder.HasKey(m => m.MealID);
+
+            builder.Property(m => m.MealName)
+                .IsRequired()
+                .HasColumnType("nvarchar")
+                .HasMaxLength(25);
+            builder.Property(m => m.MealDate)
+                .IsRequired()
+                .HasColumnType("datetime2");
+
+            builder.Property(m => m.TotalMealCalories)
+                .IsRequired()
+                .HasColumnType("decimal(5,2)");
             
         }
     }

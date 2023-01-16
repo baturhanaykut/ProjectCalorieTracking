@@ -24,8 +24,7 @@ namespace DAL.Mapping
 
             builder.Property(f => f.Calorie)
                 .IsRequired()
-                .HasColumnType("decimal")
-                .HasPrecision(5, 2);
+                .HasColumnType("decimal(5,2)");
 
             builder.Property(f => f.ImagePath)
                 .IsRequired()
@@ -34,12 +33,11 @@ namespace DAL.Mapping
             builder.Property(f => f.Porsion)
                 .IsRequired();
 
+            builder.Property(f => f.Amount)
+                .IsRequired()
+                .HasColumnType("decimal(5,2)");
 
 
-
-            //builder.HasOne(f => f.Category)
-            //    .WithMany(c => c.Foods)
-            //    .HasForeignKey(f => f.CategoryId);
         }
     }
 }
