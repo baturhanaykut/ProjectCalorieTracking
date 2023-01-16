@@ -13,7 +13,53 @@ namespace DAL.Mapping
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            
+            builder.ToTable("Users");
+
+            builder.HasKey(u => u.UserID);
+
+            builder.Property(u => u.UserName)
+                .IsRequired()
+                .HasColumnType("nvarchar")
+                .HasMaxLength(20);
+
+            builder.Property(u=>u.UserSurname)
+                .IsRequired()
+                .HasColumnType("nvarchar")
+                .HasMaxLength(30);
+
+            builder.Property(u=>u.UserMail)
+                .IsRequired()
+                .HasColumnType("nvarchar")
+                .HasMaxLength(75);
+
+            builder.Property(u => u.UserPassword)
+                .IsRequired()
+                .HasColumnType("nvarchar")
+                .HasMaxLength(8);
+
+            builder.Property(u=>u.UserBirthDate)
+                .IsRequired()
+                .HasColumnType("datetime2");
+
+
+
+            builder.Property(u => u.UserWeight)
+                .IsRequired()
+                .HasColumnType("decimal(5,2)");
+
+
+            builder.Property(u => u.UserHeight)
+                .IsRequired()
+                .HasColumnType("decimal(5,2)");
+
+            builder.Property(u => u.UserGender)
+                .IsRequired()
+                .HasColumnType("nvarchar");
+
+
+
+
+
         }
     }
 }

@@ -13,12 +13,14 @@ namespace Entities.Entity
 
         public int UserID { get; set; }
         public string UserName { get; set; }
+
+        public string UserSurname { get; set; }
         public string UserMail { get; set; }
         public string UserPassword { get; set; }
         public DateTime UserBirthDate { get; set; }
         public decimal UserWeight { get; set; }
         public decimal UserHeight { get; set; }
         public Gender UserGender { get; set; }
-        public List<Meal> Meals { get; set; }
+        public List<MealsAndUsers> Meals { get; set; }
     }
 }
