@@ -31,6 +31,9 @@ namespace DAL.Mapping
                 .IsRequired()
                 .HasColumnType("nvarchar");
 
+            builder.Property(f => f.Porsion)
+                .IsRequired();
+
 
 
 
