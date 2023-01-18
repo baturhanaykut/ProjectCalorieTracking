@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(CalorieTrackingContext))]
-    [Migration("20230116211841_mig1")]
-    partial class mig1
+    [Migration("20230118210944_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -140,12 +140,17 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
 
+                    b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UserBirthDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserGender")
                         .IsRequired()
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<decimal>("UserHeight")
                         .HasColumnType("decimal(5,2)");

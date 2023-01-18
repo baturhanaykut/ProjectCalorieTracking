@@ -62,7 +62,7 @@ partial class LoginForm
             this.txtEmail.Location = new System.Drawing.Point(108, 211);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(282, 23);
+            this.txtEmail.Size = new System.Drawing.Size(219, 23);
             this.txtEmail.TabIndex = 2;
             // 
             // txtPassword
@@ -70,7 +70,7 @@ partial class LoginForm
             this.txtPassword.Location = new System.Drawing.Point(108, 246);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(282, 23);
+            this.txtPassword.Size = new System.Drawing.Size(219, 23);
             this.txtPassword.TabIndex = 4;
             // 
             // lblPassword
@@ -101,7 +101,7 @@ partial class LoginForm
             this.btnLogIn.Location = new System.Drawing.Point(110, 283);
             this.btnLogIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(280, 33);
+            this.btnLogIn.Size = new System.Drawing.Size(217, 33);
             this.btnLogIn.TabIndex = 6;
             this.btnLogIn.Text = "Log In";
             this.btnLogIn.UseVisualStyleBackColor = true;

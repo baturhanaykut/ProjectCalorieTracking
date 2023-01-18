@@ -54,7 +54,11 @@ namespace DAL.Mapping
 
             builder.Property(u => u.UserGender)
                 .IsRequired()
-                .HasColumnType("nvarchar");
+                .HasColumnType("nvarchar")
+                .HasMaxLength(15);
+
+            builder.Property(u => u.PhotoPath)
+                .IsRequired();
 
 
 

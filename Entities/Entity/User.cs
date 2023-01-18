@@ -21,6 +21,10 @@ namespace Entities.Entity
         public decimal UserWeight { get; set; }
         public decimal UserHeight { get; set; }
         public Gender UserGender { get; set; }
+
+        public string PhotoPath { get; set; }
+
+        //Navigation 
         public List<MealsAndUsers> Meals { get; set; }
 
         // Ahmet Deneme Yapıldı.
