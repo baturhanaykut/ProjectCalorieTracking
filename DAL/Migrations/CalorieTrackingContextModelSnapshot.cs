@@ -138,12 +138,17 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
 
+                    b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UserBirthDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserGender")
                         .IsRequired()
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<decimal>("UserHeight")
                         .HasColumnType("decimal(5,2)");

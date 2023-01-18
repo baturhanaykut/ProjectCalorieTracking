@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAL.Migrations
 {
-    public partial class mig1 : Migration
+    public partial class _1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,7 +50,8 @@ namespace DAL.Migrations
                     UserBirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserWeight = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     UserHeight = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
-                    UserGender = table.Column<string>(type: "nvarchar", nullable: false)
+                    UserGender = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    PhotoPath = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
