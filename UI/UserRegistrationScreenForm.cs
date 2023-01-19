@@ -55,7 +55,7 @@ namespace UI
                 string userNameReplace = userName.Replace("İĞÜŞÖÇ", "IGUSOC");
                 user.UserName = userNameReplace;
 
-                // To Do : Replace() metodu yazılacak.
+                //To Do : İngilizciye Çeivrelecek Yerler Var
             }
 
             #endregion
@@ -71,7 +71,7 @@ namespace UI
                 string surnameReplace = surname.Replace("İĞÜŞÖÇ" ,"IGUSOC");
                 user.UserSurname = surnameReplace;
 
-                // To Do : Replace() metodu yazılacak.
+                //To Do : İngilizciye Çeivrelecek Yerler Var
             }
             #endregion
             #region Gender
@@ -79,6 +79,7 @@ namespace UI
             {
                 MessageBox.Show("Lütfen Cinsiteyi Seçiniz");
                 return;
+                //To Do : İngilizciye Çeivrelecek Yerler Var
             }
             else
             {
@@ -115,6 +116,8 @@ namespace UI
             {
                 MessageBox.Show("Şifre Alanı Boş Bırakılamaz");
                 return;
+
+                //To Do : İngilizciye Çeivrelecek Yerler Var
             }
             else if (passwordIsTrue == true)
             {
@@ -127,6 +130,8 @@ namespace UI
             {
                 MessageBox.Show("Doğumtarihiniz bugün olamaz");
                 return;
+
+                //To Do : İngilizciye Çeivrelecek Yerler Var
             }
             else
             {
@@ -167,6 +172,8 @@ namespace UI
             MessageBox.Show("Kullanıcı Başarılı ile kaydedildi");
             this.Close();
             #endregion
+
+            //To Do : İngilizciye Çeivrelecek Yerler Var
 
         }
 
@@ -217,7 +224,7 @@ namespace UI
             else
             {
                 lblPassLen.ForeColor = Color.Green;
-                passwordIsTrue2 = true;
+              
             }
 
             foreach (var item in password.Distinct())
