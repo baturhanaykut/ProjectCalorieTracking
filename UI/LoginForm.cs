@@ -27,8 +27,11 @@ public partial class LoginForm : Form
         }
         else
         {
-            FoodAddForm foodAdd = new FoodAddForm();
-            foodAdd.Show();
+            UserProfileForm userform = new UserProfileForm();
+            userform.Show();
+            this.Hide();
+            //FoodAddForm foodAdd = new FoodAddForm();
+            //foodAdd.Show();
 
             //sON HALi
 

@@ -68,13 +68,10 @@ namespace UI
                 }
 
                 user.UserName = txtName.Text;
+
                 
-
-                //string userName = txtName.Text.Replace().ToUpper().Trim();
-                    //user.UserName = userName;
-
-                    //To Do : İngilizciye Çeivrelecek Yerler Var
-                }
+                //To Do : İngilizciye Çeivrelecek Yerler Var
+            }
 
             #endregion
             #region Surname

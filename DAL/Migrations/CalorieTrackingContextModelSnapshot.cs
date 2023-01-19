@@ -64,7 +64,7 @@ namespace DAL.Migrations
 
                     b.Property<string>("ImagePath")
                         .IsRequired()
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Porsion")
                         .HasColumnType("int");

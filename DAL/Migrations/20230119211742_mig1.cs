@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAL.Migrations
 {
-    public partial class _1 : Migration
+    public partial class mig1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,7 +66,7 @@ namespace DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FoodName = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Calorie = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
-                    ImagePath = table.Column<string>(type: "nvarchar", nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Porsion = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
