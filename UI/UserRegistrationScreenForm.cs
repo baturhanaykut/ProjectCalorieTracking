@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -12,6 +13,7 @@ using DAL.Context;
 using Entities.Entity;
 using Entities.Enums;
 using Microsoft.VisualBasic.ApplicationServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using User = Entities.Entity.User;
 
 namespace UI
@@ -20,8 +22,7 @@ namespace UI
     {
         CalorieTrackingContext context;
         User user;
-        bool passwordIsTrue = false;
-       
+
         public UserRegistrationScreenForm()
         {
             InitializeComponent();
@@ -41,7 +42,6 @@ namespace UI
         }
         private void btnSignUp_Click(object sender, EventArgs e)
         {
-            //user = new User();
 
             #region Name
             if (string.IsNullOrEmpty(txtName.Text))
@@ -51,12 +51,30 @@ namespace UI
             }
             else
             {
-                string userName = txtName.Text.Trim().ToUpper();
-                string userNameReplace = userName.Replace("İĞÜŞÖÇ", "IGUSOC");
-                user.UserName = userNameReplace;
+                char[] letters = { 'ç', 'ğ', 'ı', 'ö', 'ş', 'ü', 'İ', 'Ç', 'Ğ', 'Ö', 'Ş', 'Ü' };
+                char[] replace = { 'c', 'g', 'i', 'o', 's', 'u', 'i', 'c', 'g', 'o', 's', 'u' };
 
-                //To Do : İngilizciye Çeivrelecek Yerler Var
-            }
+                for (int i = 0; i < txtName.Text.Length; i++)
+                {
+                    //harfleri dön
+                    for (int j = 0; j < letters.Length; j++)
+                    {
+                        //if the letter in userName is equal to the letter in letters array, replace it with the letter in the same index in the replace array
+                        if (txtName.Text[i] == letters[j])
+                        {
+                            txtName.Text = txtName.Text.Replace(txtName.Text[i], replace[j]);
+                        }
+                    }
+                }
+
+                user.UserName = txtName.Text;
+                
+
+                //string userName = txtName.Text.Replace().ToUpper().Trim();
+                    //user.UserName = userName;
+
+                    //To Do : İngilizciye Çeivrelecek Yerler Var
+                }
 
             #endregion
             #region Surname
@@ -68,7 +86,7 @@ namespace UI
             else
             {
                 string surname = txtSurname.Text.ToUpper().Trim();
-                string surnameReplace = surname.Replace("İĞÜŞÖÇ" ,"IGUSOC");
+                string surnameReplace = surname.Replace("İĞÜŞÖÇ", "IGUSOC");
                 user.UserSurname = surnameReplace;
 
                 //To Do : İngilizciye Çeivrelecek Yerler Var
@@ -106,25 +124,39 @@ namespace UI
                 MessageBox.Show("Mail Alanı Boş Bırakılamaz");
                 return;
             }
-            else
+            else if (Methods.IsValidEmail(txtEmail.Text))
             {
                 user.UserMail = txtEmail.Text.Trim();
             }
-            #endregion
-            #region Password
-            if (string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty((txtConfirmPassword.Text)))
+            else
             {
-                MessageBox.Show("Şifre Alanı Boş Bırakılamaz");
-                return;
+                MessageBox.Show("Geçerli bir e-mail giriniz");
+            }
+            #endregion
 
-                //To Do : İngilizciye Çeivrelecek Yerler Var
-            }
-            else if (passwordIsTrue == true)
+            #region Password
+
+            if (txtConfirmPassword.Text == txtPassword.Text)
             {
-                user.UserPassword = txtPassword.Text.Trim();
-                
+                if (Methods.CheckForUpperCase(txtPassword.Text) && Methods.CheckForLowerCase(txtPassword.Text) && Methods.CheckForSpecialCharacter(txtPassword.Text))
+                {
+                    // user.UserPassword = Methods.Sha256_hash(txtPassword.Text);
+                    user.UserPassword = txtPassword.Text.Trim();
+                }
+                else
+                {
+                    MessageBox.Show("Paralo Kriterlere uymuyor");
+                    return;
+                }
             }
+            else
+            {
+                MessageBox.Show("Parolar birbiyle eşleşmiyor");
+                return;
+            }
+
             #endregion
+
             #region BirthDay
             if (dtpDateofBirth.Value > DateTime.Now)
             {
@@ -219,18 +251,14 @@ namespace UI
             if (password.Length < 6 || password.Length > 8)
             {
                 lblPassLen.ForeColor = Color.Red;
-
             }
             else
             {
                 lblPassLen.ForeColor = Color.Green;
-              
             }
 
             foreach (var item in password.Distinct())
             {
-
-
                 if (lowerCase.Contains(item))
                 {
                     lblPassLow.ForeColor = Color.Green;
@@ -254,11 +282,10 @@ namespace UI
                     lblPassLow.ForeColor = Color.Red;
                     lblPassSpec.ForeColor = Color.Red;
                 }
-               
             }
         }
 
-        private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
+        private void txtConfirmPassword_TextChanged_1(object sender, EventArgs e)
         {
             PasswordCheck();
         }
@@ -278,20 +305,20 @@ namespace UI
                     lblPasswordControl.ForeColor = Color.Red;
                     lblPasswordControl.Text = "Your password is not matched";
                     lblPasswordControl.Visible = true;
-                    passwordIsTrue = false;
+
                 }
                 else
                 {
                     lblPasswordControl.ForeColor = Color.Green;
                     lblPasswordControl.Text = "Your password  is matched";
                     lblPasswordControl.Visible = true;
-                    passwordIsTrue = true;
+
                 }
             }
         }
 
-        #endregion
 
+        #endregion
 
     }
 }
