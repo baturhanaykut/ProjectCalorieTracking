@@ -21,6 +21,7 @@ namespace UI
         CalorieTrackingContext context;
         User user;
         bool passwordIsTrue = false;
+       
         public UserRegistrationScreenForm()
         {
             InitializeComponent();
@@ -114,6 +115,7 @@ namespace UI
             else if (passwordIsTrue == true)
             {
                 user.UserPassword = txtPassword.Text.Trim();
+                
             }
             #endregion
             #region BirthDay
@@ -188,29 +190,36 @@ namespace UI
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            lblPassLen.ForeColor = Color.LightSteelBlue;
-            lblPassLow.ForeColor = Color.LightSteelBlue;
-            lblPassNum.ForeColor = Color.LightSteelBlue;
-            lblPassSpec.ForeColor = Color.LightSteelBlue;
-            lblPassUp.ForeColor = Color.LightSteelBlue;
+            lblPassLen.ForeColor = Color.LightGray;
+            lblPassLow.ForeColor = Color.LightGray;
+            lblPassNum.ForeColor = Color.LightGray;
+            lblPassSpec.ForeColor = Color.LightGray;
+            lblPassUp.ForeColor = Color.LightGray;
 
-            txtPassword.PasswordChar = '*';
+            //txtPassword.PasswordChar = '*';
             string password = txtPassword.Text.Trim();
             string numbers = "0123456789";
             string upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string lowerCase = "abcdefghijklmnopqrstuvwxyz";
             string specialCharacters = "!'£^#+$%&/*?\\-_|@~¨´,;.:`";
-            if (password.Length < 6)
+
+
+
+            if (password.Length < 6 || password.Length > 8)
             {
                 lblPassLen.ForeColor = Color.Red;
+
             }
             else
             {
                 lblPassLen.ForeColor = Color.Green;
+                passwordIsTrue2 = true;
             }
 
             foreach (var item in password.Distinct())
             {
+
+
                 if (lowerCase.Contains(item))
                 {
                     lblPassLow.ForeColor = Color.Green;
@@ -218,7 +227,6 @@ namespace UI
                 else if (upperCase.Contains(item))
                 {
                     lblPassUp.ForeColor = Color.Green;
-
                 }
                 else if (numbers.Contains(item))
                 {
@@ -230,15 +238,12 @@ namespace UI
                 }
                 else
                 {
-                    lblPassLen.ForeColor = Color.Red;
-                    lblPassLow.ForeColor = Color.Red;
-                    lblPassNum.ForeColor = Color.Red;
-                    lblPassSpec.ForeColor = Color.Red;
                     lblPassUp.ForeColor = Color.Red;
+                    lblPassNum.ForeColor = Color.Red;
+                    lblPassLow.ForeColor = Color.Red;
+                    lblPassSpec.ForeColor = Color.Red;
                 }
-
-                PasswordCheck();
-
+               
             }
         }
 
@@ -255,9 +260,9 @@ namespace UI
             }
             else
             {
-                txtPassword.PasswordChar = '*';
+                //txtPassword.PasswordChar = '*';
                 string paswordCheck = txtConfirmPassword.Text.Trim();
-                if (txtPassword.Text != paswordCheck)
+                if (txtPassword.Text.Trim() != paswordCheck)
                 {
                     lblPasswordControl.ForeColor = Color.Red;
                     lblPasswordControl.Text = "Your password is not matched";
@@ -275,6 +280,7 @@ namespace UI
         }
 
         #endregion
+
 
     }
 }
