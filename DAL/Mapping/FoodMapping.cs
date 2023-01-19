@@ -27,8 +27,8 @@ namespace DAL.Mapping
                 .HasColumnType("decimal(5,2)");
 
             builder.Property(f => f.ImagePath)
-                .IsRequired()
-                .HasColumnType("nvarchar");
+                .IsRequired();
+                
 
             builder.Property(f => f.Porsion)
                 .IsRequired();

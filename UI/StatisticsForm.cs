@@ -16,5 +16,18 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private UserProfileForm _userProfileForm;
+
+
+        private void StatisticsForm_Load(object sender, EventArgs e)
+        {
+            _userProfileForm = new UserProfileForm();
+        }
+        private void btnBackUserForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            _userProfileForm.Show();
+        }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(CalorieTrackingContext))]
-    [Migration("20230118210944_1")]
-    partial class _1
+    [Migration("20230119211742_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,7 +66,7 @@ namespace DAL.Migrations
 
                     b.Property<string>("ImagePath")
                         .IsRequired()
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Porsion")
                         .HasColumnType("int");
