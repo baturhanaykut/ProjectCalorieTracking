@@ -18,11 +18,20 @@ public partial class LoginForm : Form
     private void btnLogIn_Click(object sender, EventArgs e)
     {
         var user = context.Users.FirstOrDefault(u=>u.UserMail == txtEmail.Text && u.UserPassword == txtPassword.Text);
+        if (user == null)
+        {
+            MessageBox.Show("Username or password is incorrect");
+            txtEmail.Clear(); 
+            txtPassword.Clear(); 
+            return;
+        }
+        else
+        {
+            FoodAddForm foodAdd = new FoodAddForm();
+            foodAdd.Show();
 
-
-
-
-
+        }
+        
     }
 
     private void btnSignUp_Click(object sender, EventArgs e)

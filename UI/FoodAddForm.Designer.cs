@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoodAddForm));
             this.mntcldrCalender = new System.Windows.Forms.MonthCalendar();
             this.pctbPicture = new System.Windows.Forms.PictureBox();
             this.lblChooseYourMeals = new System.Windows.Forms.Label();
@@ -48,15 +49,19 @@
             // 
             // mntcldrCalender
             // 
-            this.mntcldrCalender.Location = new System.Drawing.Point(18, 18);
+            this.mntcldrCalender.Location = new System.Drawing.Point(16, 14);
+            this.mntcldrCalender.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.mntcldrCalender.Name = "mntcldrCalender";
             this.mntcldrCalender.TabIndex = 0;
             // 
             // pctbPicture
             // 
-            this.pctbPicture.Location = new System.Drawing.Point(292, 18);
+            this.pctbPicture.Image = ((System.Drawing.Image)(resources.GetObject("pctbPicture.Image")));
+            this.pctbPicture.Location = new System.Drawing.Point(256, 14);
+            this.pctbPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pctbPicture.Name = "pctbPicture";
-            this.pctbPicture.Size = new System.Drawing.Size(529, 207);
+            this.pctbPicture.Size = new System.Drawing.Size(463, 155);
+            this.pctbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctbPicture.TabIndex = 1;
             this.pctbPicture.TabStop = false;
             // 
@@ -64,43 +69,45 @@
             // 
             this.lblChooseYourMeals.AutoSize = true;
             this.lblChooseYourMeals.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblChooseYourMeals.Location = new System.Drawing.Point(18, 275);
+            this.lblChooseYourMeals.Location = new System.Drawing.Point(16, 206);
             this.lblChooseYourMeals.Name = "lblChooseYourMeals";
-            this.lblChooseYourMeals.Size = new System.Drawing.Size(149, 20);
+            this.lblChooseYourMeals.Size = new System.Drawing.Size(116, 15);
             this.lblChooseYourMeals.TabIndex = 2;
             this.lblChooseYourMeals.Text = "Choose Your Meals :";
             // 
             // cmbChooseYourMeals
             // 
             this.cmbChooseYourMeals.FormattingEnabled = true;
-            this.cmbChooseYourMeals.Location = new System.Drawing.Point(198, 272);
+            this.cmbChooseYourMeals.Location = new System.Drawing.Point(173, 204);
+            this.cmbChooseYourMeals.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbChooseYourMeals.Name = "cmbChooseYourMeals";
-            this.cmbChooseYourMeals.Size = new System.Drawing.Size(182, 28);
+            this.cmbChooseYourMeals.Size = new System.Drawing.Size(160, 23);
             this.cmbChooseYourMeals.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(47, 361);
+            this.label1.Location = new System.Drawing.Point(41, 271);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 20);
+            this.label1.Size = new System.Drawing.Size(93, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "Food Category :";
             // 
             // cmbFoodCategory
             // 
             this.cmbFoodCategory.FormattingEnabled = true;
-            this.cmbFoodCategory.Location = new System.Drawing.Point(198, 361);
+            this.cmbFoodCategory.Location = new System.Drawing.Point(173, 271);
+            this.cmbFoodCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFoodCategory.Name = "cmbFoodCategory";
-            this.cmbFoodCategory.Size = new System.Drawing.Size(182, 28);
+            this.cmbFoodCategory.Size = new System.Drawing.Size(160, 23);
             this.cmbFoodCategory.TabIndex = 5;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(428, 272);
+            this.label2.Location = new System.Drawing.Point(374, 204);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(232, 28);
+            this.label2.Size = new System.Drawing.Size(203, 21);
             this.label2.TabIndex = 6;
             this.label2.Text = "Choose Your Meal First";
             // 
@@ -108,43 +115,46 @@
             // 
             this.lblFoods.AutoSize = true;
             this.lblFoods.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblFoods.Location = new System.Drawing.Point(108, 458);
+            this.lblFoods.Location = new System.Drawing.Point(94, 344);
             this.lblFoods.Name = "lblFoods";
-            this.lblFoods.Size = new System.Drawing.Size(59, 20);
+            this.lblFoods.Size = new System.Drawing.Size(45, 15);
             this.lblFoods.TabIndex = 7;
             this.lblFoods.Text = "Foods :";
             // 
             // cmbFoods
             // 
             this.cmbFoods.FormattingEnabled = true;
-            this.cmbFoods.Location = new System.Drawing.Point(198, 458);
+            this.cmbFoods.Location = new System.Drawing.Point(173, 344);
+            this.cmbFoods.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFoods.Name = "cmbFoods";
-            this.cmbFoods.Size = new System.Drawing.Size(182, 28);
+            this.cmbFoods.Size = new System.Drawing.Size(160, 23);
             this.cmbFoods.TabIndex = 8;
             // 
             // nmrcAmount
             // 
-            this.nmrcAmount.Location = new System.Drawing.Point(511, 459);
+            this.nmrcAmount.Location = new System.Drawing.Point(447, 344);
+            this.nmrcAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmrcAmount.Name = "nmrcAmount";
-            this.nmrcAmount.Size = new System.Drawing.Size(150, 27);
+            this.nmrcAmount.Size = new System.Drawing.Size(131, 23);
             this.nmrcAmount.TabIndex = 9;
             // 
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAmount.Location = new System.Drawing.Point(413, 461);
+            this.lblAmount.Location = new System.Drawing.Point(361, 346);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(75, 20);
+            this.lblAmount.Size = new System.Drawing.Size(58, 15);
             this.lblAmount.TabIndex = 10;
             this.lblAmount.Text = "Amount :";
             // 
             // btnAddYourOwnFood
             // 
             this.btnAddYourOwnFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddYourOwnFood.Location = new System.Drawing.Point(445, 361);
+            this.btnAddYourOwnFood.Location = new System.Drawing.Point(389, 271);
+            this.btnAddYourOwnFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddYourOwnFood.Name = "btnAddYourOwnFood";
-            this.btnAddYourOwnFood.Size = new System.Drawing.Size(216, 50);
+            this.btnAddYourOwnFood.Size = new System.Drawing.Size(189, 38);
             this.btnAddYourOwnFood.TabIndex = 11;
             this.btnAddYourOwnFood.Text = "Add Your Own Food";
             this.btnAddYourOwnFood.UseVisualStyleBackColor = true;
@@ -152,9 +162,10 @@
             // btnBacktoUserForm
             // 
             this.btnBacktoUserForm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBacktoUserForm.Location = new System.Drawing.Point(428, 585);
+            this.btnBacktoUserForm.Location = new System.Drawing.Point(374, 439);
+            this.btnBacktoUserForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBacktoUserForm.Name = "btnBacktoUserForm";
-            this.btnBacktoUserForm.Size = new System.Drawing.Size(262, 72);
+            this.btnBacktoUserForm.Size = new System.Drawing.Size(229, 54);
             this.btnBacktoUserForm.TabIndex = 12;
             this.btnBacktoUserForm.Text = "Back to User Form";
             this.btnBacktoUserForm.UseVisualStyleBackColor = true;
@@ -162,18 +173,19 @@
             // btnAddFood
             // 
             this.btnAddFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddFood.Location = new System.Drawing.Point(118, 585);
+            this.btnAddFood.Location = new System.Drawing.Point(103, 439);
+            this.btnAddFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddFood.Name = "btnAddFood";
-            this.btnAddFood.Size = new System.Drawing.Size(262, 72);
+            this.btnAddFood.Size = new System.Drawing.Size(229, 54);
             this.btnAddFood.TabIndex = 13;
             this.btnAddFood.Text = "Add Food";
             this.btnAddFood.UseVisualStyleBackColor = true;
             // 
             // FoodAddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 722);
+            this.ClientSize = new System.Drawing.Size(725, 542);
             this.Controls.Add(this.btnAddFood);
             this.Controls.Add(this.btnBacktoUserForm);
             this.Controls.Add(this.btnAddYourOwnFood);
@@ -188,6 +200,7 @@
             this.Controls.Add(this.lblChooseYourMeals);
             this.Controls.Add(this.pctbPicture);
             this.Controls.Add(this.mntcldrCalender);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FoodAddForm";
             this.Text = "FoodAddForm";
             ((System.ComponentModel.ISupportInitialize)(this.pctbPicture)).EndInit();
