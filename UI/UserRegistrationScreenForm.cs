@@ -50,7 +50,9 @@ namespace UI
             }
             else
             {
-                user.UserName = txtName.Text.Trim().ToUpper();
+                string userName = txtName.Text.Trim().ToUpper();
+                string userNameReplace = userName.Replace("İĞÜŞÖÇ", "IGUSOC");
+                user.UserName = userNameReplace;
 
                 // To Do : Replace() metodu yazılacak.
             }
@@ -64,7 +66,9 @@ namespace UI
             }
             else
             {
-                user.UserSurname = txtSurname.Text.Trim().ToUpper();
+                string surname = txtSurname.Text.ToUpper().Trim();
+                string surnameReplace = surname.Replace("İĞÜŞÖÇ" ,"IGUSOC");
+                user.UserSurname = surnameReplace;
 
                 // To Do : Replace() metodu yazılacak.
             }
