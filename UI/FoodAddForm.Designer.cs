@@ -41,7 +41,12 @@
             this.btnAddYourOwnFood = new System.Windows.Forms.Button();
             this.btnBacktoUserForm = new System.Windows.Forms.Button();
             this.btnAddFood = new System.Windows.Forms.Button();
+            this.lstbAllFoodName = new System.Windows.Forms.ListBox();
             this.lstbFoodName = new System.Windows.Forms.ListBox();
+            this.btnLsitBoxEkle = new System.Windows.Forms.Button();
+            this.btnListBoxSil = new System.Windows.Forms.Button();
+            this.lblCaloriGoster = new System.Windows.Forms.Label();
+            this.lblAlınanCaloriMiktarı = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pctbPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcAmount)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +55,7 @@
             // 
             this.mntcldrCalender.Location = new System.Drawing.Point(16, 14);
             this.mntcldrCalender.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.mntcldrCalender.MaxSelectionCount = 1;
             this.mntcldrCalender.Name = "mntcldrCalender";
             this.mntcldrCalender.TabIndex = 0;
             // 
@@ -59,7 +65,7 @@
             this.pctbPicture.Location = new System.Drawing.Point(256, 14);
             this.pctbPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pctbPicture.Name = "pctbPicture";
-            this.pctbPicture.Size = new System.Drawing.Size(463, 162);
+            this.pctbPicture.Size = new System.Drawing.Size(373, 162);
             this.pctbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctbPicture.TabIndex = 1;
             this.pctbPicture.TabStop = false;
@@ -125,7 +131,7 @@
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAmount.Location = new System.Drawing.Point(314, 290);
+            this.lblAmount.Location = new System.Drawing.Point(314, 292);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(58, 15);
             this.lblAmount.TabIndex = 10;
@@ -134,7 +140,7 @@
             // btnAddYourOwnFood
             // 
             this.btnAddYourOwnFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddYourOwnFood.Location = new System.Drawing.Point(529, 305);
+            this.btnAddYourOwnFood.Location = new System.Drawing.Point(378, 248);
             this.btnAddYourOwnFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddYourOwnFood.Name = "btnAddYourOwnFood";
             this.btnAddYourOwnFood.Size = new System.Drawing.Size(148, 23);
@@ -146,7 +152,7 @@
             // btnBacktoUserForm
             // 
             this.btnBacktoUserForm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBacktoUserForm.Location = new System.Drawing.Point(369, 446);
+            this.btnBacktoUserForm.Location = new System.Drawing.Point(378, 446);
             this.btnBacktoUserForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBacktoUserForm.Name = "btnBacktoUserForm";
             this.btnBacktoUserForm.Size = new System.Drawing.Size(229, 54);
@@ -165,22 +171,74 @@
             this.btnAddFood.TabIndex = 13;
             this.btnAddFood.Text = "Add Food";
             this.btnAddFood.UseVisualStyleBackColor = true;
+            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
+            // 
+            // lstbAllFoodName
+            // 
+            this.lstbAllFoodName.FormattingEnabled = true;
+            this.lstbAllFoodName.ItemHeight = 15;
+            this.lstbAllFoodName.Location = new System.Drawing.Point(148, 292);
+            this.lstbAllFoodName.Name = "lstbAllFoodName";
+            this.lstbAllFoodName.Size = new System.Drawing.Size(162, 139);
+            this.lstbAllFoodName.TabIndex = 14;
             // 
             // lstbFoodName
             // 
             this.lstbFoodName.FormattingEnabled = true;
             this.lstbFoodName.ItemHeight = 15;
-            this.lstbFoodName.Location = new System.Drawing.Point(146, 290);
+            this.lstbFoodName.Location = new System.Drawing.Point(452, 290);
             this.lstbFoodName.Name = "lstbFoodName";
-            this.lstbFoodName.Size = new System.Drawing.Size(162, 139);
-            this.lstbFoodName.TabIndex = 14;
+            this.lstbFoodName.Size = new System.Drawing.Size(162, 109);
+            this.lstbFoodName.TabIndex = 15;
+            // 
+            // btnLsitBoxEkle
+            // 
+            this.btnLsitBoxEkle.Location = new System.Drawing.Point(336, 340);
+            this.btnLsitBoxEkle.Name = "btnLsitBoxEkle";
+            this.btnLsitBoxEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnLsitBoxEkle.TabIndex = 16;
+            this.btnLsitBoxEkle.Text = "-->";
+            this.btnLsitBoxEkle.UseVisualStyleBackColor = true;
+            this.btnLsitBoxEkle.Click += new System.EventHandler(this.btnLsitBoxEkle_Click);
+            // 
+            // btnListBoxSil
+            // 
+            this.btnListBoxSil.Location = new System.Drawing.Point(336, 384);
+            this.btnListBoxSil.Name = "btnListBoxSil";
+            this.btnListBoxSil.Size = new System.Drawing.Size(75, 23);
+            this.btnListBoxSil.TabIndex = 16;
+            this.btnListBoxSil.Text = "<--";
+            this.btnListBoxSil.UseVisualStyleBackColor = true;
+            this.btnListBoxSil.Click += new System.EventHandler(this.btnListBoxSil_Click);
+            // 
+            // lblCaloriGoster
+            // 
+            this.lblCaloriGoster.AutoSize = true;
+            this.lblCaloriGoster.Location = new System.Drawing.Point(542, 416);
+            this.lblCaloriGoster.Name = "lblCaloriGoster";
+            this.lblCaloriGoster.Size = new System.Drawing.Size(0, 15);
+            this.lblCaloriGoster.TabIndex = 17;
+            // 
+            // lblAlınanCaloriMiktarı
+            // 
+            this.lblAlınanCaloriMiktarı.AutoSize = true;
+            this.lblAlınanCaloriMiktarı.Location = new System.Drawing.Point(452, 416);
+            this.lblAlınanCaloriMiktarı.Name = "lblAlınanCaloriMiktarı";
+            this.lblAlınanCaloriMiktarı.Size = new System.Drawing.Size(84, 15);
+            this.lblAlınanCaloriMiktarı.TabIndex = 17;
+            this.lblAlınanCaloriMiktarı.Text = "Calori Miktarı :";
             // 
             // FoodAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 582);
+            this.ClientSize = new System.Drawing.Size(644, 582);
+            this.Controls.Add(this.lblAlınanCaloriMiktarı);
+            this.Controls.Add(this.lblCaloriGoster);
+            this.Controls.Add(this.btnListBoxSil);
+            this.Controls.Add(this.btnLsitBoxEkle);
             this.Controls.Add(this.lstbFoodName);
+            this.Controls.Add(this.lstbAllFoodName);
             this.Controls.Add(this.btnAddFood);
             this.Controls.Add(this.btnBacktoUserForm);
             this.Controls.Add(this.btnAddYourOwnFood);
@@ -218,6 +276,11 @@
         private Button btnAddYourOwnFood;
         private Button btnBacktoUserForm;
         private Button btnAddFood;
+        private ListBox lstbAllFoodName;
         private ListBox lstbFoodName;
+        private Button btnLsitBoxEkle;
+        private Button btnListBoxSil;
+        private Label lblCaloriGoster;
+        private Label lblAlınanCaloriMiktarı;
     }
 }
