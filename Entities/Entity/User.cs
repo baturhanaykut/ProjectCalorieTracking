@@ -24,8 +24,9 @@ namespace Entities.Entity
 
         public string PhotoPath { get; set; }
 
-        //Navigation 
-        public List<MealsAndUsers> Meals { get; set; }
+        //Navigation
+        public List<Meal> Meals { get; set; }
+        //public List<MealsAndUsers> Meals { get; set; }
 
         // Ahmet Deneme Yapıldı.
     }

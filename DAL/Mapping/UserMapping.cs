@@ -17,6 +17,9 @@ namespace DAL.Mapping
 
             builder.HasKey(u => u.UserID);
 
+            builder.HasMany(u => u.Meals)
+                .WithMany(m => m.Users);
+
             builder.Property(u => u.UserName)
                 .IsRequired()
                 .HasColumnType("nvarchar")

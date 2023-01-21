@@ -15,10 +15,7 @@ namespace DAL.Context
         public DbSet<Food> Foods { get; set; }
         public DbSet<Meal> Meals { get; set; }
         public DbSet<User> Users { get; set; }
-        //public DbSet<MealsAndFoods> MealsAndFoodsType { get; set; }
-
-        public DbSet<MealsAndUsers> MealsAndUsers { get; set; }
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.;Database=ProjectCalorieTracking-1;Trusted_Connection=True;");
@@ -30,7 +27,7 @@ namespace DAL.Context
             modelBuilder.ApplyConfiguration(new FoodMapping());
             modelBuilder.ApplyConfiguration(new MealMapping());
             modelBuilder.ApplyConfiguration(new UserMapping());
-            modelBuilder.ApplyConfiguration(new MealsAndUsersMapping());
+            
         }
     }
 }
