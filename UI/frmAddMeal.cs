@@ -13,19 +13,21 @@ using Entities.Enums;
 
 namespace UI
 {
-    public partial class AddMealForm : Form
+    public partial class frmAddMeal : Form
     {
-        public AddMealForm()
+        private User _user;
+        public frmAddMeal(User user)
         {
             InitializeComponent();
+            _user = user;
         }
 
         CalorieTrackingContext context;
         Food food;
-        FoodAddForm _frm;
+        frmFoodAdd _frm;
         private void AddMealForm_Load(object sender, EventArgs e)
         {
-            _frm = new FoodAddForm();
+            _frm = new frmFoodAdd(_user);
             context = new CalorieTrackingContext();
             food = new Food();
             ComboBoxDoldur();

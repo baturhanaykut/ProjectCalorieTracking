@@ -3,14 +3,15 @@ using Entities.Entity;
 
 namespace UI;
 
-public partial class LoginForm : Form
+public partial class frmLogin : Form
 {
     CalorieTrackingContext context;
-    User _user;
-    UserProfileForm _profileForm;
+    public User _user;
+    frmUserProfile _userProfileForm;
 
 
-    public LoginForm()
+
+    public frmLogin()
     {
         InitializeComponent();
     }
@@ -19,35 +20,35 @@ public partial class LoginForm : Form
     {
         context = new CalorieTrackingContext();
         _user = new User();
-        _profileForm = new UserProfileForm();
+        //_profileForm = new UserProfileForm();
 
     }
 
     private void btnLogIn_Click(object sender, EventArgs e)
     {
-        var user = context.Users.FirstOrDefault(u=>u.UserMail == txtEmail.Text && u.UserPassword == txtPassword.Text);
-        if (user == null)
+        _user = context.Users.FirstOrDefault(u => u.UserMail == txtEmail.Text && u.UserPassword == txtPassword.Text);
+        if (_user == null)
         {
             MessageBox.Show("Username or password is incorrect");
-            txtEmail.Clear(); 
-            txtPassword.Clear(); 
+            txtEmail.Clear();
+            txtPassword.Clear();
             return;
         }
         else
         {
-            _profileForm = new UserProfileForm();
-            _profileForm.userProfile=user;
+            _userProfileForm = new frmUserProfile(_user);
+            //_userProfileForm._userProfile = _user;
             this.Hide();
-            _profileForm.Show();
-            
+            _userProfileForm.Show();
+
 
         }
-        
+
     }
 
     private void btnSignUp_Click(object sender, EventArgs e)
     {
-        UserRegistrationScreenForm userRegistrationScreenForm = new UserRegistrationScreenForm();
+        frmUserRegistration userRegistrationScreenForm = new frmUserRegistration();
         userRegistrationScreenForm.ShowDialog();
     }
 

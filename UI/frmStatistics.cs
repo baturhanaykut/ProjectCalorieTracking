@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class StatisticsForm : Form
+    public partial class frmStatistics : Form
     {
-        public StatisticsForm()
+        public frmStatistics()
         {
             InitializeComponent();
         }
 
-        private UserProfileForm _userProfileForm;
+        private frmUserProfile _userProfileForm;
 
 
         private void StatisticsForm_Load(object sender, EventArgs e)
         {
-            _userProfileForm = new UserProfileForm();
+            //_userProfileForm = new frmUserProfile();
         }
         private void btnBackUserForm_Click(object sender, EventArgs e)
         {

@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class UserProfileForm
+    partial class frmUserProfile
     {
         /// <summary>
         /// Required designer variable.
@@ -220,11 +220,11 @@
             this.lblUserInfo.TabIndex = 11;
             this.lblUserInfo.Text = "label1";
             // 
-            // UserProfileForm
+            // frmUserProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1285, 568);
+            this.ClientSize = new System.Drawing.Size(1048, 568);
             this.Controls.Add(this.lblUserInfo);
             this.Controls.Add(this.btnStatisticsForm);
             this.Controls.Add(this.btnAddMeal);
@@ -237,7 +237,7 @@
             this.Controls.Add(this.dgvDailyReport);
             this.Controls.Add(this.pctbUserPicture);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "UserProfileForm";
+            this.Name = "frmUserProfile";
             this.Text = "UserProfileForm";
             this.Load += new System.EventHandler(this.UserProfileForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctbUserPicture)).EndInit();

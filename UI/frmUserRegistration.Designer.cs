@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class UserRegistrationScreenForm
+    partial class frmUserRegistration
     {
         /// <summary>
         /// Required designer variable.
