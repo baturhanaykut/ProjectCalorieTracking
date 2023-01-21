@@ -6,8 +6,8 @@ namespace UI;
 public partial class frmLogin : Form
 {
     CalorieTrackingContext context;
-    public User _user;
-    frmUserProfile _userProfileForm;
+    //User _user;
+    //frmUserProfile _userProfileForm;
 
 
 
@@ -19,15 +19,15 @@ public partial class frmLogin : Form
     private void LoginForm_Load(object sender, EventArgs e)
     {
         context = new CalorieTrackingContext();
-        _user = new User();
+        //_user = new User();
         //_profileForm = new UserProfileForm();
 
     }
 
     private void btnLogIn_Click(object sender, EventArgs e)
     {
-        _user = context.Users.FirstOrDefault(u => u.UserMail == txtEmail.Text && u.UserPassword == txtPassword.Text);
-        if (_user == null)
+        User user = context.Users.FirstOrDefault(u => u.UserMail == txtEmail.Text && u.UserPassword == txtPassword.Text);
+        if (user == null)
         {
             MessageBox.Show("Username or password is incorrect");
             txtEmail.Clear();
@@ -36,12 +36,9 @@ public partial class frmLogin : Form
         }
         else
         {
-            _userProfileForm = new frmUserProfile(_user);
-            //_userProfileForm._userProfile = _user;
+            frmUserProfile frm = new frmUserProfile(user);
             this.Hide();
-            _userProfileForm.Show();
-
-
+            frm.Show();
         }
 
     }

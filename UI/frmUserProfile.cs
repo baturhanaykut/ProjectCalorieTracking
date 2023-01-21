@@ -17,13 +17,11 @@ namespace UI
     public partial class frmUserProfile : Form
     {
         CalorieTrackingContext context;
-        public User _userProfile;
-        public frmFoodAdd _foodAdd;
-        public frmUserProfile _frmUserProfile;
-        public frmStatistics _statisticsForm;
+        
         private DateTime time;
         private DateTime time2;
-        
+        private User _userProfile;
+
         public frmUserProfile(User user)
         {
             InitializeComponent();
@@ -59,19 +57,16 @@ namespace UI
 
         private void btnAddMeal_Click(object sender, EventArgs e)
         {
-            _foodAdd = new frmFoodAdd(_userProfile);
-            _foodAdd.Show();
-
-            //frmFoodAdd foodAddfrm = new frmFoodAdd();
-            //foodAddfrm.Show();
-            this.Close();
+            frmFoodAdd frm = new frmFoodAdd(_userProfile,this);
+            frm.Show();
+            this.Hide();
         }
 
         private void btnStatisticsForm_Click(object sender, EventArgs e)
         {
-            _statisticsForm = new frmStatistics(_userProfile);
-            _statisticsForm.Show();
-            this.Close();
+            frmStatistics frm = new frmStatistics(_userProfile, this);
+            frm.Show();
+            this.Hide();
         }
 
         private void dtpDailyReport_ValueChanged(object sender, EventArgs e)
@@ -150,9 +145,9 @@ namespace UI
             {
                 time = DateTime.Today;
                 time2 = DateTime.Today.AddDays(-7);
-                
+
                 var liste = context.Meals
-                .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Breakfast && m.MealDate <= time && m.MealDate>= time2)
+                .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Breakfast && m.MealDate <= time && m.MealDate >= time2)
                 .SelectMany(f => f.Foods)
                 .Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName })
                 .ToList();
@@ -163,17 +158,17 @@ namespace UI
 
                 dgvWeeklyMonthlyReport.Columns[1].HeaderText = "Food Name";
                 dgvWeeklyMonthlyReport.Columns[2].HeaderText = "Total Calorie";
-               
-               
+
+
 
             }
-            else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Dinner )
+            else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Dinner)
             {
                 time = DateTime.Today;
                 time2 = DateTime.Today.AddDays(-7);
 
                 var liste = context.Meals
-                    .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Dinner && m.MealDate <= time && m.MealDate>= time2)
+                    .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Dinner && m.MealDate <= time && m.MealDate >= time2)
                     .SelectMany(f => f.Foods)
                     .Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName })
                     .ToList();
@@ -183,7 +178,7 @@ namespace UI
                 dgvComparisonReport.DataSource = listeGruopBylı;
 
 
-                
+
 
                 //dgvComparisonReport.DataSource = context.Meals
                 //    .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Dinner)
@@ -206,7 +201,7 @@ namespace UI
 
                 dgvComparisonReport.DataSource = listeGruopBylı;
 
-                
+
 
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Lunch)

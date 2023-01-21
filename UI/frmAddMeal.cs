@@ -15,19 +15,20 @@ namespace UI
 {
     public partial class frmAddMeal : Form
     {
-        private User _user;
-        public frmAddMeal(User user)
-        {
-            InitializeComponent();
-            _user = user;
-        }
-
+        //private User _user;
         CalorieTrackingContext context;
         Food food;
-        frmFoodAdd _frm;
+        //frmFoodAdd _frm;
+        private  frmFoodAdd _frmFoodAdd;
+        public frmAddMeal(frmFoodAdd frmFoddAdd)
+        {
+            InitializeComponent();
+            _frmFoodAdd = frmFoddAdd;
+        }
+
         private void AddMealForm_Load(object sender, EventArgs e)
         {
-            _frm = new frmFoodAdd(_user);
+            //_frm = new frmFoodAdd(_user);
             context = new CalorieTrackingContext();
             food = new Food();
             ComboBoxDoldur();
@@ -178,8 +179,8 @@ namespace UI
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            _frmFoodAdd.Show();
             this.Close();
-            _frm.Show();
         }
     }
 

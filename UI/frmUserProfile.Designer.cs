@@ -64,6 +64,7 @@
             // 
             // dgvDailyReport
             // 
+            this.dgvDailyReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDailyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDailyReport.Location = new System.Drawing.Point(211, 46);
             this.dgvDailyReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -75,6 +76,7 @@
             // 
             // dgvWeeklyMonthlyReport
             // 
+            this.dgvWeeklyMonthlyReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvWeeklyMonthlyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWeeklyMonthlyReport.Location = new System.Drawing.Point(627, 46);
             this.dgvWeeklyMonthlyReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -168,6 +170,7 @@
             // 
             // dgvComparisonReport
             // 
+            this.dgvComparisonReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvComparisonReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvComparisonReport.Location = new System.Drawing.Point(12, 55);
             this.dgvComparisonReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
