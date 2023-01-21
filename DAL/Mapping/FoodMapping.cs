@@ -24,19 +24,17 @@ namespace DAL.Mapping
 
             builder.Property(f => f.Calorie)
                 .IsRequired()
-                .HasColumnType("decimal(5,2)");
+                .HasColumnType("decimal(6,2)");
 
             builder.Property(f => f.ImagePath)
                 .IsRequired();
-                
+
 
             builder.Property(f => f.Porsion)
-                .IsRequired();
-
-            builder.Property(f => f.Amount)
                 .IsRequired()
-                .HasColumnType("decimal(5,2)");
-
+                .HasColumnType("nvarchar")
+                .HasMaxLength(15);
+            
 
         }
     }

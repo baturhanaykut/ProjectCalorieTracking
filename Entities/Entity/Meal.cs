@@ -17,6 +17,8 @@ namespace Entities.Entity
         public DateTime MealDate { get; set; }
         public decimal TotalMealCalories { get; set; }
         public List<MealsAndUsers> Users { get; set; }
-        public List<MealsAndFoods> Foods { get; set; }
+
+        public List<Food> Foods { get; set; }
+        //public List<MealsAndFoods> Foods { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MealName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     MealDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TotalMealCalories = table.Column<decimal>(type: "decimal(5,2)", nullable: false)
+                    TotalMealCalories = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,8 +48,8 @@ namespace DAL.Migrations
                     UserMail = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     UserPassword = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     UserBirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserWeight = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
-                    UserHeight = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    UserWeight = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    UserHeight = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     UserGender = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     PhotoPath = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -65,10 +65,10 @@ namespace DAL.Migrations
                     FoodID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FoodName = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
-                    Calorie = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    Calorie = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Porsion = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -107,38 +107,38 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MealsAndFoodsType",
+                name: "FoodMeal",
                 columns: table => new
                 {
-                    FoodID = table.Column<int>(type: "int", nullable: false),
-                    MealID = table.Column<int>(type: "int", nullable: false)
+                    FoodsFoodID = table.Column<int>(type: "int", nullable: false),
+                    MealsMealID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MealsAndFoodsType", x => new { x.MealID, x.FoodID });
+                    table.PrimaryKey("PK_FoodMeal", x => new { x.FoodsFoodID, x.MealsMealID });
                     table.ForeignKey(
-                        name: "FK_MealsAndFoodsType_Foods_FoodID",
-                        column: x => x.FoodID,
+                        name: "FK_FoodMeal_Foods_FoodsFoodID",
+                        column: x => x.FoodsFoodID,
                         principalTable: "Foods",
                         principalColumn: "FoodID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MealsAndFoodsType_Meals_MealID",
-                        column: x => x.MealID,
+                        name: "FK_FoodMeal_Meals_MealsMealID",
+                        column: x => x.MealsMealID,
                         principalTable: "Meals",
                         principalColumn: "MealID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_FoodMeal_MealsMealID",
+                table: "FoodMeal",
+                column: "MealsMealID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Foods_CategoryId",
                 table: "Foods",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MealsAndFoodsType_FoodID",
-                table: "MealsAndFoodsType",
-                column: "FoodID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MealsAndUsers_UserID",
@@ -149,7 +149,7 @@ namespace DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MealsAndFoodsType");
+                name: "FoodMeal");
 
             migrationBuilder.DropTable(
                 name: "MealsAndUsers");

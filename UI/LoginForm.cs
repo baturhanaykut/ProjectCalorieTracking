@@ -1,18 +1,26 @@
 using DAL.Context;
+using Entities.Entity;
 
 namespace UI;
 
 public partial class LoginForm : Form
 {
+    CalorieTrackingContext context;
+    User _user;
+    UserProfileForm _profileForm;
+
+
     public LoginForm()
     {
         InitializeComponent();
     }
 
-    CalorieTrackingContext context;
     private void LoginForm_Load(object sender, EventArgs e)
     {
         context = new CalorieTrackingContext();
+        _user = new User();
+        _profileForm = new UserProfileForm();
+
     }
 
     private void btnLogIn_Click(object sender, EventArgs e)
@@ -27,13 +35,11 @@ public partial class LoginForm : Form
         }
         else
         {
-            UserProfileForm userform = new UserProfileForm();
-            userform.Show();
+            _profileForm = new UserProfileForm();
+            _profileForm.userProfile=user;
             this.Hide();
-            //FoodAddForm foodAdd = new FoodAddForm();
-            //foodAdd.Show();
-
-            //sON HALi
+            _profileForm.Show();
+            
 
         }
         

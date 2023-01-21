@@ -42,6 +42,7 @@
             this.rbWeeklyComparison = new System.Windows.Forms.RadioButton();
             this.btnAddMeal = new System.Windows.Forms.Button();
             this.btnStatisticsForm = new System.Windows.Forms.Button();
+            this.lblUserInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pctbUserPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDailyReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWeeklyMonthlyReport)).BeginInit();
@@ -52,17 +53,18 @@
             // pctbUserPicture
             // 
             this.pctbUserPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctbUserPicture.Location = new System.Drawing.Point(828, 63);
+            this.pctbUserPicture.Location = new System.Drawing.Point(12, 11);
             this.pctbUserPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pctbUserPicture.Name = "pctbUserPicture";
-            this.pctbUserPicture.Size = new System.Drawing.Size(143, 140);
+            this.pctbUserPicture.Size = new System.Drawing.Size(181, 140);
+            this.pctbUserPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctbUserPicture.TabIndex = 0;
             this.pctbUserPicture.TabStop = false;
             // 
             // dgvDailyReport
             // 
             this.dgvDailyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDailyReport.Location = new System.Drawing.Point(10, 63);
+            this.dgvDailyReport.Location = new System.Drawing.Point(211, 46);
             this.dgvDailyReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDailyReport.Name = "dgvDailyReport";
             this.dgvDailyReport.RowHeadersWidth = 51;
@@ -73,7 +75,7 @@
             // dgvWeeklyMonthlyReport
             // 
             this.dgvWeeklyMonthlyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWeeklyMonthlyReport.Location = new System.Drawing.Point(426, 63);
+            this.dgvWeeklyMonthlyReport.Location = new System.Drawing.Point(627, 46);
             this.dgvWeeklyMonthlyReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvWeeklyMonthlyReport.Name = "dgvWeeklyMonthlyReport";
             this.dgvWeeklyMonthlyReport.RowHeadersWidth = 51;
@@ -83,7 +85,7 @@
             // 
             // dtpDailyReport
             // 
-            this.dtpDailyReport.Location = new System.Drawing.Point(231, 28);
+            this.dtpDailyReport.Location = new System.Drawing.Point(432, 11);
             this.dtpDailyReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDailyReport.Name = "dtpDailyReport";
             this.dtpDailyReport.Size = new System.Drawing.Size(177, 23);
@@ -93,7 +95,7 @@
             // 
             this.rbWeekly.AutoSize = true;
             this.rbWeekly.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbWeekly.Location = new System.Drawing.Point(544, 31);
+            this.rbWeekly.Location = new System.Drawing.Point(745, 14);
             this.rbWeekly.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbWeekly.Name = "rbWeekly";
             this.rbWeekly.Size = new System.Drawing.Size(67, 19);
@@ -106,7 +108,7 @@
             // 
             this.rbMonthly.AutoSize = true;
             this.rbMonthly.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbMonthly.Location = new System.Drawing.Point(716, 31);
+            this.rbMonthly.Location = new System.Drawing.Point(917, 14);
             this.rbMonthly.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbMonthly.Name = "rbMonthly";
             this.rbMonthly.Size = new System.Drawing.Size(71, 19);
@@ -119,7 +121,7 @@
             // 
             this.lblSelectedDailyReport.AutoSize = true;
             this.lblSelectedDailyReport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblSelectedDailyReport.Location = new System.Drawing.Point(23, 32);
+            this.lblSelectedDailyReport.Location = new System.Drawing.Point(224, 15);
             this.lblSelectedDailyReport.Name = "lblSelectedDailyReport";
             this.lblSelectedDailyReport.Size = new System.Drawing.Size(134, 15);
             this.lblSelectedDailyReport.TabIndex = 6;
@@ -140,7 +142,7 @@
             this.dvgComparisonReport.Controls.Add(this.rbmounthlyComparison);
             this.dvgComparisonReport.Controls.Add(this.rbWeeklyComparison);
             this.dvgComparisonReport.Controls.Add(this.cmbMealSelection);
-            this.dvgComparisonReport.Location = new System.Drawing.Point(10, 235);
+            this.dvgComparisonReport.Location = new System.Drawing.Point(211, 218);
             this.dvgComparisonReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dvgComparisonReport.Name = "dvgComparisonReport";
             this.dvgComparisonReport.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -189,7 +191,7 @@
             // btnAddMeal
             // 
             this.btnAddMeal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddMeal.Location = new System.Drawing.Point(10, 484);
+            this.btnAddMeal.Location = new System.Drawing.Point(211, 467);
             this.btnAddMeal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddMeal.Name = "btnAddMeal";
             this.btnAddMeal.Size = new System.Drawing.Size(346, 40);
@@ -201,7 +203,7 @@
             // btnStatisticsForm
             // 
             this.btnStatisticsForm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStatisticsForm.Location = new System.Drawing.Point(399, 484);
+            this.btnStatisticsForm.Location = new System.Drawing.Point(600, 467);
             this.btnStatisticsForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatisticsForm.Name = "btnStatisticsForm";
             this.btnStatisticsForm.Size = new System.Drawing.Size(414, 40);
@@ -210,11 +212,20 @@
             this.btnStatisticsForm.UseVisualStyleBackColor = true;
             this.btnStatisticsForm.Click += new System.EventHandler(this.btnStatisticsForm_Click);
             // 
+            // lblUserInfo
+            // 
+            this.lblUserInfo.Location = new System.Drawing.Point(14, 164);
+            this.lblUserInfo.Name = "lblUserInfo";
+            this.lblUserInfo.Size = new System.Drawing.Size(179, 140);
+            this.lblUserInfo.TabIndex = 11;
+            this.lblUserInfo.Text = "label1";
+            // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 532);
+            this.ClientSize = new System.Drawing.Size(1285, 568);
+            this.Controls.Add(this.lblUserInfo);
             this.Controls.Add(this.btnStatisticsForm);
             this.Controls.Add(this.btnAddMeal);
             this.Controls.Add(this.dvgComparisonReport);
@@ -256,5 +267,6 @@
         private RadioButton rbWeeklyComparison;
         private Button btnAddMeal;
         private Button btnStatisticsForm;
+        private Label lblUserInfo;
     }
 }
