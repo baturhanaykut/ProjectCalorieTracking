@@ -18,12 +18,12 @@ using User = Entities.Entity.User;
 
 namespace UI
 {
-    public partial class UserRegistrationScreenForm : Form
+    public partial class frmUserRegistration : Form
     {
         CalorieTrackingContext context;
         User user;
 
-        public UserRegistrationScreenForm()
+        public frmUserRegistration()
         {
             InitializeComponent();
         }

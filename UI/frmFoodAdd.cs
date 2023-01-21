@@ -14,23 +14,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace UI
 {
-    public partial class FoodAddForm : Form
+    public partial class frmFoodAdd : Form
     {
-        UserProfileForm _userForm;
         CalorieTrackingContext context;
+        public frmUserProfile _userForm;
+        private User _user;
         Meal meal;
+        List<Food> _foods;
+        List<User> _users = new List<User>();
+
         decimal _mealCalories;
         decimal _totalCalories;
-        List<Food> _foods;
 
-        public FoodAddForm()
+        public frmFoodAdd(User userProfile)
         {
             InitializeComponent();
+            _user = userProfile;
         }
 
         private void FoodAddForm_Load(object sender, EventArgs e)
         {
-            _userForm = new UserProfileForm();
+            _userForm = new frmUserProfile(_user);
+            _userForm._userProfile = _user;
             context = new CalorieTrackingContext();
 
             ComboBoxDoldur();
@@ -47,7 +52,7 @@ namespace UI
 
         private void btnAddYourOwnFood_Click(object sender, EventArgs e)
         {
-            AddMealForm adfrm = new AddMealForm();
+            frmAddMeal adfrm = new frmAddMeal(_user);
             adfrm.Show();
             this.Close();
         }
@@ -75,21 +80,26 @@ namespace UI
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Breakfast && _foods != null)
             {
+                meal.MealName = MealType.Breakfast;
                 FoodAdd();
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Lunch && _foods != null)
             {
+                meal.MealName = MealType.Lunch;
                 FoodAdd();
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Dinner && _foods != null)
             {
+                meal.MealName = MealType.Dinner;
                 FoodAdd();
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Snack && _foods != null)
             {
-               FoodAdd();
+                meal.MealName = MealType.Snack;
+                FoodAdd();
             }
             
+           
         }
 
         private void FoodAdd()
@@ -97,10 +107,16 @@ namespace UI
             meal.MealDate = mntcldrCalender.SelectionStart.Date;
             meal.TotalMealCalories = Convert.ToDecimal(lblCaloriGoster.Text);
             meal.Foods = _foods;
-
             context.Meals.Add(meal);
+            
+
+            //_users = new List<User>();
+            //_users.Add(_user);
+            
             context.SaveChanges();
             MessageBox.Show("Yemeğiniz başarı ile eklendi");
+
+            _mealCalories = 0;
             ListBoxComboBoxTemizle();
         }
 
@@ -148,6 +164,7 @@ namespace UI
                 }
             }
             lstbFoodName.Items.Clear();
+            lblCaloriGoster.Text = " ";
         }
 
         private void btnListBoxSil_Click(object sender, EventArgs e)

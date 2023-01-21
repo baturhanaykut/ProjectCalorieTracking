@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FoodAddForm
+    partial class frmFoodAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoodAddForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFoodAdd));
             this.mntcldrCalender = new System.Windows.Forms.MonthCalendar();
             this.pctbPicture = new System.Windows.Forms.PictureBox();
             this.lblChooseYourMeals = new System.Windows.Forms.Label();
@@ -230,18 +230,18 @@
             this.grpFoodAdd.TabIndex = 18;
             this.grpFoodAdd.TabStop = false;
             // 
-            // FoodAddForm
+            // frmFoodAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 582);
+            this.ClientSize = new System.Drawing.Size(661, 582);
             this.Controls.Add(this.grpFoodAdd);
             this.Controls.Add(this.btnAddFood);
             this.Controls.Add(this.btnBacktoUserForm);
             this.Controls.Add(this.pctbPicture);
             this.Controls.Add(this.mntcldrCalender);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FoodAddForm";
+            this.Name = "frmFoodAdd";
             this.Text = "FoodAddForm";
             this.Load += new System.EventHandler(this.FoodAddForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctbPicture)).EndInit();

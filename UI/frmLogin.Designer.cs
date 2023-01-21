@@ -1,6 +1,6 @@
 ﻿namespace UI;
 
-partial class LoginForm
+partial class frmLogin
 {
     /// <summary>
     ///  Required designer variable.

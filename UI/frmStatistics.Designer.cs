@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class StatisticsForm
+    partial class frmStatistics
     {
         /// <summary>
         /// Required designer variable.

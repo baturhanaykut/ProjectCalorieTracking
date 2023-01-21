@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class AddMealForm
+    partial class frmAddMeal
     {
         /// <summary>
         /// Required designer variable.
