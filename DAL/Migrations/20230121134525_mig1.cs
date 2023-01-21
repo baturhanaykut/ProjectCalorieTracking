@@ -23,21 +23,6 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Meals",
-                columns: table => new
-                {
-                    MealID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MealName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    MealDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TotalMealCalories = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Meals", x => x.MealID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -67,8 +52,7 @@ namespace DAL.Migrations
                     FoodName = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Calorie = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Porsion = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Porsion = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -83,24 +67,22 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MealsAndUsers",
+                name: "Meals",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(type: "int", nullable: false),
                     MealID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MealName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    MealDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TotalMealCalories = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MealsAndUsers", x => new { x.MealID, x.UserID });
+                    table.PrimaryKey("PK_Meals", x => x.MealID);
                     table.ForeignKey(
-                        name: "FK_MealsAndUsers_Meals_MealID",
-                        column: x => x.MealID,
-                        principalTable: "Meals",
-                        principalColumn: "MealID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MealsAndUsers_Users_UserID",
-                        column: x => x.UserID,
+                        name: "FK_Meals_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
@@ -141,9 +123,9 @@ namespace DAL.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MealsAndUsers_UserID",
-                table: "MealsAndUsers",
-                column: "UserID");
+                name: "IX_Meals_UserId",
+                table: "Meals",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -152,19 +134,16 @@ namespace DAL.Migrations
                 name: "FoodMeal");
 
             migrationBuilder.DropTable(
-                name: "MealsAndUsers");
-
-            migrationBuilder.DropTable(
                 name: "Foods");
 
             migrationBuilder.DropTable(
                 name: "Meals");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Users");
         }
     }
 }

@@ -18,7 +18,8 @@ namespace DAL.Mapping
             builder.HasKey(u => u.UserID);
 
             builder.HasMany(u => u.Meals)
-                .WithMany(m => m.Users);
+                .WithOne(m => m.User)
+                .HasForeignKey(m=>m.UserId);
 
             builder.Property(u => u.UserName)
                 .IsRequired()

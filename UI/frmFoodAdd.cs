@@ -1,4 +1,4 @@
-﻿   using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,11 +18,10 @@ namespace UI
     {
         CalorieTrackingContext context;
         public frmUserProfile _userForm;
-        private User _user;
-        Meal meal;
-        List<Food> _foods;
-        List<User> _users = new List<User>();
-
+        public User _user;
+        public Meal _meal;
+        public List<Food> _foods;
+      
         decimal _mealCalories;
         decimal _totalCalories;
 
@@ -34,14 +33,13 @@ namespace UI
 
         private void FoodAddForm_Load(object sender, EventArgs e)
         {
+            context = new CalorieTrackingContext();
             _userForm = new frmUserProfile(_user);
             _userForm._userProfile = _user;
-            context = new CalorieTrackingContext();
 
             ComboBoxDoldur();
 
         }
-
         private void ComboBoxDoldur()
         {
             cmbChooseYourMeals.DataSource = Enum.GetNames(typeof(MealType)).ToList();
@@ -49,14 +47,12 @@ namespace UI
             cmbFoodCategory.DataSource = context.Categories.Select(c => c.CategoryName).ToList();
             cmbFoodCategory.SelectedIndex = -1;
         }
-
         private void btnAddYourOwnFood_Click(object sender, EventArgs e)
         {
             frmAddMeal adfrm = new frmAddMeal(_user);
             adfrm.Show();
             this.Close();
         }
-
         private void cmbFoodCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             lstbAllFoodName.DataSource = context.Foods
@@ -65,61 +61,58 @@ namespace UI
 
             lstbAllFoodName.DisplayMember = "FoodName";
             lstbAllFoodName.ValueMember = "Calorie";
-            
-        }
 
+        }
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            meal = new Meal();
 
-            //meal.Foods =
-
+            _meal = new Meal();
+            
             if (cmbChooseYourMeals.SelectedIndex == -1)
             {
                 MessageBox.Show("Lütfen Öğün Seçiniz");
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Breakfast && _foods != null)
             {
-                meal.MealName = MealType.Breakfast;
+                _meal.MealName = MealType.Breakfast;
                 FoodAdd();
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Lunch && _foods != null)
             {
-                meal.MealName = MealType.Lunch;
+                _meal.MealName = MealType.Lunch;
                 FoodAdd();
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Dinner && _foods != null)
             {
-                meal.MealName = MealType.Dinner;
+                _meal.MealName = MealType.Dinner;
                 FoodAdd();
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Snack && _foods != null)
             {
-                meal.MealName = MealType.Snack;
+                _meal.MealName = MealType.Snack;
                 FoodAdd();
             }
-            
-           
-        }
 
+
+        }
         private void FoodAdd()
         {
-            meal.MealDate = mntcldrCalender.SelectionStart.Date;
-            meal.TotalMealCalories = Convert.ToDecimal(lblCaloriGoster.Text);
-            meal.Foods = _foods;
-            context.Meals.Add(meal);
-            
+            _meal.MealDate = mntcldrCalender.SelectionStart.Date;
+            _meal.TotalMealCalories = Convert.ToDecimal(lblCaloriGoster.Text);
+            _meal.Foods = _foods;
+            _meal.UserId = _userForm._userProfile.UserID;
+            context.Meals.Add(_meal);
+
 
             //_users = new List<User>();
             //_users.Add(_user);
-            
+
             context.SaveChanges();
             MessageBox.Show("Yemeğiniz başarı ile eklendi");
 
             _mealCalories = 0;
             ListBoxComboBoxTemizle();
         }
-
         private void btnBacktoUserForm_Click(object sender, EventArgs e)
         {
 
@@ -149,7 +142,7 @@ namespace UI
                 //add foods to list
                 _foods = new List<Food>();
                 _foods.Add(food);
-               
+
             }
 
         }
