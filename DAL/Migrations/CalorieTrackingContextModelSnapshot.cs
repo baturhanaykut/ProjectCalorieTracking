@@ -94,7 +94,12 @@ namespace DAL.Migrations
                     b.Property<decimal>("TotalMealCalories")
                         .HasColumnType("decimal(10,2)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("MealID");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Meals", (string)null);
                 });
@@ -165,21 +170,6 @@ namespace DAL.Migrations
                     b.ToTable("FoodMeal");
                 });
 
-            modelBuilder.Entity("MealUser", b =>
-                {
-                    b.Property<int>("MealsMealID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersUserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("MealsMealID", "UsersUserID");
-
-                    b.HasIndex("UsersUserID");
-
-                    b.ToTable("MealUser");
-                });
-
             modelBuilder.Entity("Entities.Entity.Food", b =>
                 {
                     b.HasOne("Entities.Entity.Category", "Category")
@@ -189,6 +179,17 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Entities.Entity.Meal", b =>
+                {
+                    b.HasOne("Entities.Entity.User", "User")
+                        .WithMany("Meals")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FoodMeal", b =>
@@ -206,24 +207,14 @@ namespace DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MealUser", b =>
-                {
-                    b.HasOne("Entities.Entity.Meal", null)
-                        .WithMany()
-                        .HasForeignKey("MealsMealID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Entity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersUserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Entities.Entity.Category", b =>
                 {
                     b.Navigation("Foods");
+                });
+
+            modelBuilder.Entity("Entities.Entity.User", b =>
+                {
+                    b.Navigation("Meals");
                 });
 #pragma warning restore 612, 618
         }

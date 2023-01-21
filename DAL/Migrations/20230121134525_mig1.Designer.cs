@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(CalorieTrackingContext))]
-    [Migration("20230120225834_mig1")]
+    [Migration("20230121134525_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,9 +50,6 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodID"), 1L, 1);
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(10,2)");
-
                     b.Property<decimal>("Calorie")
                         .HasColumnType("decimal(6,2)");
 
@@ -68,8 +65,10 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Porsion")
-                        .HasColumnType("int");
+                    b.Property<string>("Porsion")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.HasKey("FoodID");
 
@@ -97,24 +96,14 @@ namespace DAL.Migrations
                     b.Property<decimal>("TotalMealCalories")
                         .HasColumnType("decimal(10,2)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("MealID");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Meals", (string)null);
-                });
-
-            modelBuilder.Entity("Entities.Entity.MealsAndUsers", b =>
-                {
-                    b.Property<int>("MealID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("MealID", "UserID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("MealsAndUsers");
                 });
 
             modelBuilder.Entity("Entities.Entity.User", b =>
@@ -194,21 +183,13 @@ namespace DAL.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Entities.Entity.MealsAndUsers", b =>
+            modelBuilder.Entity("Entities.Entity.Meal", b =>
                 {
-                    b.HasOne("Entities.Entity.Meal", "Meal")
-                        .WithMany("Users")
-                        .HasForeignKey("MealID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Entities.Entity.User", "User")
                         .WithMany("Meals")
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Meal");
 
                     b.Navigation("User");
                 });
@@ -231,11 +212,6 @@ namespace DAL.Migrations
             modelBuilder.Entity("Entities.Entity.Category", b =>
                 {
                     b.Navigation("Foods");
-                });
-
-            modelBuilder.Entity("Entities.Entity.Meal", b =>
-                {
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Entities.Entity.User", b =>

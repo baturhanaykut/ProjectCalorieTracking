@@ -37,6 +37,7 @@
             this.lblSelectedDailyReport = new System.Windows.Forms.Label();
             this.cmbMealSelection = new System.Windows.Forms.ComboBox();
             this.dvgComparisonReport = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvComparisonReport = new System.Windows.Forms.DataGridView();
             this.rbmounthlyComparison = new System.Windows.Forms.RadioButton();
             this.rbWeeklyComparison = new System.Windows.Forms.RadioButton();
@@ -90,6 +91,7 @@
             this.dtpDailyReport.Name = "dtpDailyReport";
             this.dtpDailyReport.Size = new System.Drawing.Size(177, 23);
             this.dtpDailyReport.TabIndex = 3;
+            this.dtpDailyReport.ValueChanged += new System.EventHandler(this.dtpDailyReport_ValueChanged);
             // 
             // rbWeekly
             // 
@@ -103,6 +105,7 @@
             this.rbWeekly.TabStop = true;
             this.rbWeekly.Text = "Weekly";
             this.rbWeekly.UseVisualStyleBackColor = true;
+            this.rbWeekly.CheckedChanged += new System.EventHandler(this.rbWeekly_CheckedChanged);
             // 
             // rbMonthly
             // 
@@ -116,6 +119,7 @@
             this.rbMonthly.TabStop = true;
             this.rbMonthly.Text = "Monthly";
             this.rbMonthly.UseVisualStyleBackColor = true;
+            this.rbMonthly.CheckedChanged += new System.EventHandler(this.rbMonthly_CheckedChanged);
             // 
             // lblSelectedDailyReport
             // 
@@ -130,14 +134,16 @@
             // cmbMealSelection
             // 
             this.cmbMealSelection.FormattingEnabled = true;
-            this.cmbMealSelection.Location = new System.Drawing.Point(12, 20);
+            this.cmbMealSelection.Location = new System.Drawing.Point(93, 18);
             this.cmbMealSelection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbMealSelection.Name = "cmbMealSelection";
             this.cmbMealSelection.Size = new System.Drawing.Size(210, 23);
             this.cmbMealSelection.TabIndex = 7;
+            this.cmbMealSelection.SelectedIndexChanged += new System.EventHandler(this.cmbMealSelection_SelectedIndexChanged);
             // 
             // dvgComparisonReport
             // 
+            this.dvgComparisonReport.Controls.Add(this.label1);
             this.dvgComparisonReport.Controls.Add(this.dgvComparisonReport);
             this.dvgComparisonReport.Controls.Add(this.rbmounthlyComparison);
             this.dvgComparisonReport.Controls.Add(this.rbWeeklyComparison);
@@ -150,6 +156,15 @@
             this.dvgComparisonReport.TabIndex = 8;
             this.dvgComparisonReport.TabStop = false;
             this.dvgComparisonReport.Text = "Comparison Report";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Chose Meals";
             // 
             // dgvComparisonReport
             // 
@@ -166,7 +181,7 @@
             // 
             this.rbmounthlyComparison.AutoSize = true;
             this.rbmounthlyComparison.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbmounthlyComparison.Location = new System.Drawing.Point(525, 22);
+            this.rbmounthlyComparison.Location = new System.Drawing.Point(530, 18);
             this.rbmounthlyComparison.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbmounthlyComparison.Name = "rbmounthlyComparison";
             this.rbmounthlyComparison.Size = new System.Drawing.Size(71, 19);
@@ -174,12 +189,13 @@
             this.rbmounthlyComparison.TabStop = true;
             this.rbmounthlyComparison.Text = "Monthly";
             this.rbmounthlyComparison.UseVisualStyleBackColor = true;
+            this.rbmounthlyComparison.CheckedChanged += new System.EventHandler(this.rbmounthlyComparison_CheckedChanged);
             // 
             // rbWeeklyComparison
             // 
             this.rbWeeklyComparison.AutoSize = true;
             this.rbWeeklyComparison.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbWeeklyComparison.Location = new System.Drawing.Point(354, 22);
+            this.rbWeeklyComparison.Location = new System.Drawing.Point(389, 18);
             this.rbWeeklyComparison.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbWeeklyComparison.Name = "rbWeeklyComparison";
             this.rbWeeklyComparison.Size = new System.Drawing.Size(67, 19);
@@ -187,6 +203,7 @@
             this.rbWeeklyComparison.TabStop = true;
             this.rbWeeklyComparison.Text = "Weekly";
             this.rbWeeklyComparison.UseVisualStyleBackColor = true;
+            this.rbWeeklyComparison.CheckedChanged += new System.EventHandler(this.rbWeeklyComparison_CheckedChanged);
             // 
             // btnAddMeal
             // 
@@ -268,5 +285,6 @@
         private Button btnAddMeal;
         private Button btnStatisticsForm;
         private Label lblUserInfo;
+        private Label label1;
     }
 }
