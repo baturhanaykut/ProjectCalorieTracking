@@ -15,7 +15,7 @@ namespace DAL.Context
         public DbSet<Food> Foods { get; set; }
         public DbSet<Meal> Meals { get; set; }
         public DbSet<User> Users { get; set; }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.;Database=ProjectCalorieTracking-1;Trusted_Connection=True;");

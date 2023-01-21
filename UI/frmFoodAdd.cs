@@ -11,32 +11,32 @@ using DAL.Context;
 using Entities.Entity;
 using Entities.Enums;
 using Microsoft.EntityFrameworkCore;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace UI
 {
     public partial class frmFoodAdd : Form
     {
         CalorieTrackingContext context;
-        public frmUserProfile _userForm;
+        public frmUserProfile _frmUserProfile;
         public User _user;
         public Meal _meal;
         public List<Food> _foods;
-      
+        
+
         decimal _mealCalories;
         decimal _totalCalories;
 
-        public frmFoodAdd(User userProfile)
+        public frmFoodAdd(User user,frmUserProfile frmUserProfile)
         {
             InitializeComponent();
-            _user = userProfile;
+            _user = user;
+            _frmUserProfile = frmUserProfile;
         }
 
         private void FoodAddForm_Load(object sender, EventArgs e)
         {
             context = new CalorieTrackingContext();
-            _userForm = new frmUserProfile(_user);
-            _userForm._userProfile = _user;
-
             ComboBoxDoldur();
 
         }
@@ -49,9 +49,9 @@ namespace UI
         }
         private void btnAddYourOwnFood_Click(object sender, EventArgs e)
         {
-            frmAddMeal adfrm = new frmAddMeal(_user);
+            frmAddMeal adfrm = new frmAddMeal(this);
             adfrm.Show();
-            this.Close();
+            this.Hide();
         }
         private void cmbFoodCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -65,34 +65,60 @@ namespace UI
         }
         private void btnAddFood_Click(object sender, EventArgs e)
         {
+            // Bu userın mealarını göstercem
+            // Userın mealırın içerisnden seçilen tarihteki meallerı bulucaz
+            // Bu mealların içinde öğün varmı 
 
-            _meal = new Meal();
-            
-            if (cmbChooseYourMeals.SelectedIndex == -1)
+            var userMeals = context.Meals
+                .Where(x => x.UserId == _user.UserID)
+                .Where(y => y.MealDate == mntcldrCalender.SelectionStart.Date).ToList();
+
+            bool aynımı = false;
+            foreach (var item in userMeals)
             {
-                MessageBox.Show("Lütfen Öğün Seçiniz");
-            }
-            else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Breakfast && _foods != null)
-            {
-                _meal.MealName = MealType.Breakfast;
-                FoodAdd();
-            }
-            else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Lunch && _foods != null)
-            {
-                _meal.MealName = MealType.Lunch;
-                FoodAdd();
-            }
-            else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Dinner && _foods != null)
-            {
-                _meal.MealName = MealType.Dinner;
-                FoodAdd();
-            }
-            else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Snack && _foods != null)
-            {
-                _meal.MealName = MealType.Snack;
-                FoodAdd();
+                if (item.MealName == (Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex)
+                {
+                    aynımı = true;
+                    break;
+                }
             }
 
+            if (aynımı)
+            {
+                MessageBox.Show("Mevcut Öğün Ekleme Yapabilirsiniz");
+                ListBoxComboBoxTemizle();
+            }
+            else
+            {
+
+                _meal = new Meal();
+
+                if (cmbChooseYourMeals.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Lütfen Öğün Seçiniz");
+                }
+                else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Breakfast && _foods != null)
+                {
+                    _meal.MealName = MealType.Breakfast;
+                    FoodAdd();
+                }
+                else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Lunch && _foods != null)
+                {
+                    _meal.MealName = MealType.Lunch;
+                    FoodAdd();
+                }
+                else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Dinner && _foods != null)
+                {
+                    _meal.MealName = MealType.Dinner;
+                    FoodAdd();
+                }
+                else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Snack && _foods != null)
+                {
+                    _meal.MealName = MealType.Snack;
+                    FoodAdd();
+                }
+
+            }
 
         }
         private void FoodAdd()
@@ -100,24 +126,21 @@ namespace UI
             _meal.MealDate = mntcldrCalender.SelectionStart.Date;
             _meal.TotalMealCalories = Convert.ToDecimal(lblCaloriGoster.Text);
             _meal.Foods = _foods;
-            _meal.UserId = _userForm._userProfile.UserID;
+            _meal.UserId = _user.UserID;
             context.Meals.Add(_meal);
-
-
-            //_users = new List<User>();
-            //_users.Add(_user);
 
             context.SaveChanges();
             MessageBox.Show("Yemeğiniz başarı ile eklendi");
 
             _mealCalories = 0;
             ListBoxComboBoxTemizle();
+            FillDgvFoodAdd();
+
         }
         private void btnBacktoUserForm_Click(object sender, EventArgs e)
         {
-
+            _frmUserProfile.Show();
             this.Close();
-            _userForm.Show();
         }
 
         private void btnLsitBoxEkle_Click(object sender, EventArgs e)
@@ -188,6 +211,31 @@ namespace UI
                     MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        void FillDgvFoodAdd()
+        {
+            var SecilenTarih = context.Meals.Where(x => x.UserId == _user.UserID && x.MealDate == mntcldrCalender.SelectionStart.Date).ToList();
+            
+            dgvFoodAdd.DataSource = SecilenTarih;
+            dgvFoodAdd.Columns["UserId"].Visible = false;
+            dgvFoodAdd.Columns["MealID"].Visible = false;
+            dgvFoodAdd.Columns["User"].Visible = false;
+            dgvFoodAdd.Columns["MealName"].HeaderText = "Meal Name";
+            dgvFoodAdd.Columns["MealDate"].HeaderText = "Meal Date";
+            dgvFoodAdd.Columns["TotalMealCalories"].HeaderText = "Total Meal Calories";
+        }
+        private void mntcldrCalender_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            FillDgvFoodAdd();
+        }
+
+        private void dgvFoodAdd_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //
+           // cmbChooseYourMeals.SelectedIndex = dgvFoodAdd.CurrentRow
+
+           
         }
     }
 }

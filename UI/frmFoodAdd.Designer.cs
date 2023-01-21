@@ -46,8 +46,12 @@
             this.lblCaloriGoster = new System.Windows.Forms.Label();
             this.lblAlınanCaloriMiktarı = new System.Windows.Forms.Label();
             this.grpFoodAdd = new System.Windows.Forms.GroupBox();
+            this.dgvFoodAdd = new System.Windows.Forms.DataGridView();
+            this.bntUpdtae = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pctbPicture)).BeginInit();
             this.grpFoodAdd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFoodAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // mntcldrCalender
@@ -57,6 +61,7 @@
             this.mntcldrCalender.MaxSelectionCount = 1;
             this.mntcldrCalender.Name = "mntcldrCalender";
             this.mntcldrCalender.TabIndex = 0;
+            this.mntcldrCalender.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.mntcldrCalender_DateChanged);
             // 
             // pctbPicture
             // 
@@ -64,7 +69,7 @@
             this.pctbPicture.Location = new System.Drawing.Point(256, 14);
             this.pctbPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pctbPicture.Name = "pctbPicture";
-            this.pctbPicture.Size = new System.Drawing.Size(373, 162);
+            this.pctbPicture.Size = new System.Drawing.Size(755, 162);
             this.pctbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctbPicture.TabIndex = 1;
             this.pctbPicture.TabStop = false;
@@ -230,11 +235,42 @@
             this.grpFoodAdd.TabIndex = 18;
             this.grpFoodAdd.TabStop = false;
             // 
+            // dgvFoodAdd
+            // 
+            this.dgvFoodAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFoodAdd.Location = new System.Drawing.Point(649, 196);
+            this.dgvFoodAdd.Name = "dgvFoodAdd";
+            this.dgvFoodAdd.RowTemplate.Height = 25;
+            this.dgvFoodAdd.Size = new System.Drawing.Size(362, 262);
+            this.dgvFoodAdd.TabIndex = 19;
+            this.dgvFoodAdd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFoodAdd_CellClick);
+            // 
+            // bntUpdtae
+            // 
+            this.bntUpdtae.Location = new System.Drawing.Point(649, 475);
+            this.bntUpdtae.Name = "bntUpdtae";
+            this.bntUpdtae.Size = new System.Drawing.Size(139, 54);
+            this.bntUpdtae.TabIndex = 20;
+            this.bntUpdtae.Text = "Food Update";
+            this.bntUpdtae.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(892, 475);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(119, 54);
+            this.btnRemove.TabIndex = 21;
+            this.btnRemove.Text = "Food Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
             // frmFoodAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 582);
+            this.ClientSize = new System.Drawing.Size(1023, 582);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.bntUpdtae);
+            this.Controls.Add(this.dgvFoodAdd);
             this.Controls.Add(this.grpFoodAdd);
             this.Controls.Add(this.btnAddFood);
             this.Controls.Add(this.btnBacktoUserForm);
@@ -247,6 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctbPicture)).EndInit();
             this.grpFoodAdd.ResumeLayout(false);
             this.grpFoodAdd.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFoodAdd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,5 +307,8 @@
         private Label lblCaloriGoster;
         private Label lblAlınanCaloriMiktarı;
         private GroupBox grpFoodAdd;
+        private DataGridView dgvFoodAdd;
+        private Button bntUpdtae;
+        private Button btnRemove;
     }
 }

@@ -15,25 +15,25 @@ namespace UI
     public partial class frmStatistics : Form
     {
         CalorieTrackingContext context;
-        public frmUserProfile _userProfileForm;
+        public frmUserProfile _frmUserProfile;
         public User _user;
         
-        public frmStatistics(User frmUserProfile)
+        public frmStatistics(User user, frmUserProfile frmUserProfile )
         {
             InitializeComponent();
-            _user = frmUserProfile;
+            _user = user;
+            _frmUserProfile = frmUserProfile;
         }
         
         private void StatisticsForm_Load(object sender, EventArgs e)
         {
             context = new CalorieTrackingContext();
-            _userProfileForm = new frmUserProfile(_user);
-            _userProfileForm._userProfile = _user;
+            
         }
         private void btnBackUserForm_Click(object sender, EventArgs e)
         {
+            _frmUserProfile.Show();
             this.Close();
-            _userProfileForm.Show();
         }
 
 
