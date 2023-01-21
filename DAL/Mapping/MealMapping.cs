@@ -27,8 +27,12 @@ namespace DAL.Mapping
 
             builder.Property(m => m.TotalMealCalories)
                 .IsRequired()
-                .HasColumnType("decimal(5,2)");
-            
+                .HasColumnType("decimal(10,2)");
+            builder.HasMany(f => f.Foods)
+                .WithMany(m => m.Meals);
+
+
+
         }
     }
 }

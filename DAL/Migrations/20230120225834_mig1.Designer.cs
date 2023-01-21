@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(CalorieTrackingContext))]
-    [Migration("20230119211742_mig1")]
+    [Migration("20230120225834_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,10 +51,10 @@ namespace DAL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodID"), 1L, 1);
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<decimal>("Calorie")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(6,2)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -95,26 +95,11 @@ namespace DAL.Migrations
                         .HasColumnType("nvarchar(25)");
 
                     b.Property<decimal>("TotalMealCalories")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("MealID");
 
                     b.ToTable("Meals", (string)null);
-                });
-
-            modelBuilder.Entity("Entities.Entity.MealsAndFoods", b =>
-                {
-                    b.Property<int>("MealID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FoodID")
-                        .HasColumnType("int");
-
-                    b.HasKey("MealID", "FoodID");
-
-                    b.HasIndex("FoodID");
-
-                    b.ToTable("MealsAndFoodsType");
                 });
 
             modelBuilder.Entity("Entities.Entity.MealsAndUsers", b =>
@@ -153,7 +138,7 @@ namespace DAL.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<decimal>("UserHeight")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<string>("UserMail")
                         .IsRequired()
@@ -176,11 +161,26 @@ namespace DAL.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<decimal>("UserWeight")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("UserID");
 
                     b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("FoodMeal", b =>
+                {
+                    b.Property<int>("FoodsFoodID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MealsMealID")
+                        .HasColumnType("int");
+
+                    b.HasKey("FoodsFoodID", "MealsMealID");
+
+                    b.HasIndex("MealsMealID");
+
+                    b.ToTable("FoodMeal");
                 });
 
             modelBuilder.Entity("Entities.Entity.Food", b =>
@@ -192,25 +192,6 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Entities.Entity.MealsAndFoods", b =>
-                {
-                    b.HasOne("Entities.Entity.Food", "Food")
-                        .WithMany("Meals")
-                        .HasForeignKey("FoodID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Entity.Meal", "Meal")
-                        .WithMany("Foods")
-                        .HasForeignKey("MealID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Food");
-
-                    b.Navigation("Meal");
                 });
 
             modelBuilder.Entity("Entities.Entity.MealsAndUsers", b =>
@@ -232,20 +213,28 @@ namespace DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("FoodMeal", b =>
+                {
+                    b.HasOne("Entities.Entity.Food", null)
+                        .WithMany()
+                        .HasForeignKey("FoodsFoodID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Entity.Meal", null)
+                        .WithMany()
+                        .HasForeignKey("MealsMealID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Entities.Entity.Category", b =>
                 {
                     b.Navigation("Foods");
                 });
 
-            modelBuilder.Entity("Entities.Entity.Food", b =>
-                {
-                    b.Navigation("Meals");
-                });
-
             modelBuilder.Entity("Entities.Entity.Meal", b =>
                 {
-                    b.Navigation("Foods");
-
                     b.Navigation("Users");
                 });
 

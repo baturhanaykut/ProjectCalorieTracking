@@ -1,4 +1,4 @@
-﻿using System;
+﻿   using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +21,7 @@ namespace UI
         Meal meal;
         decimal _mealCalories;
         decimal _totalCalories;
-        List<MealsAndFoods> _foods;
+        List<Food> _foods;
 
         public FoodAddForm()
         {
@@ -60,8 +60,7 @@ namespace UI
 
             lstbAllFoodName.DisplayMember = "FoodName";
             lstbAllFoodName.ValueMember = "Calorie";
-
-
+            
         }
 
         private void btnAddFood_Click(object sender, EventArgs e)
@@ -76,15 +75,33 @@ namespace UI
             }
             else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Breakfast && _foods != null)
             {
-                meal.MealDate = mntcldrCalender.SelectionStart.Date;
-                meal.TotalMealCalories =Convert.ToDecimal(lblCaloriGoster.Text);
-                meal.Foods =_foods;
-
-
-
-
+                FoodAdd();
             }
+            else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Lunch && _foods != null)
+            {
+                FoodAdd();
+            }
+            else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Dinner && _foods != null)
+            {
+                FoodAdd();
+            }
+            else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Snack && _foods != null)
+            {
+               FoodAdd();
+            }
+            
+        }
 
+        private void FoodAdd()
+        {
+            meal.MealDate = mntcldrCalender.SelectionStart.Date;
+            meal.TotalMealCalories = Convert.ToDecimal(lblCaloriGoster.Text);
+            meal.Foods = _foods;
+
+            context.Meals.Add(meal);
+            context.SaveChanges();
+            MessageBox.Show("Yemeğiniz başarı ile eklendi");
+            ListBoxComboBoxTemizle();
         }
 
         private void btnBacktoUserForm_Click(object sender, EventArgs e)
@@ -114,10 +131,23 @@ namespace UI
                 lblCaloriGoster.Text = _mealCalories.ToString();
 
                 //add foods to list
-                _foods = new List<MealsAndFoods>();
+                _foods = new List<Food>();
                 _foods.Add(food);
+               
             }
 
+        }
+
+        private void ListBoxComboBoxTemizle()
+        {
+            foreach (Control item in grpFoodAdd.Controls)
+            {
+                if (item is ComboBox)
+                {
+                    ((ComboBox)item).SelectedIndex = -1;
+                }
+            }
+            lstbFoodName.Items.Clear();
         }
 
         private void btnListBoxSil_Click(object sender, EventArgs e)

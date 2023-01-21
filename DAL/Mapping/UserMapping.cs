@@ -45,12 +45,12 @@ namespace DAL.Mapping
 
             builder.Property(u => u.UserWeight)
                 .IsRequired()
-                .HasColumnType("decimal(5,2)");
+                .HasColumnType("decimal(10,2)");
 
 
             builder.Property(u => u.UserHeight)
                 .IsRequired()
-                .HasColumnType("decimal(5,2)");
+                .HasColumnType("decimal(10,2)");
 
             builder.Property(u => u.UserGender)
                 .IsRequired()

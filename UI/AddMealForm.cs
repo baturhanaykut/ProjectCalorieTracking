@@ -121,7 +121,7 @@ namespace UI
             MessageBox.Show("Yemek başarılı ile kaydedil");
 
             ButtonClear();
-
+            food = new Food();
             #endregion
         }
 

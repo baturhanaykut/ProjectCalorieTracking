@@ -63,10 +63,11 @@ namespace UI
                         if (txtName.Text[i] == letters[j])
                         {
                             txtName.Text = txtName.Text.Replace(txtName.Text[i], replace[j]);
+                           
                         }
                     }
                 }
-
+                txtName.Text = txtName.Text.ToUpper();
                 user.UserName = txtName.Text;
 
                 
@@ -82,10 +83,25 @@ namespace UI
             }
             else
             {
-                string surname = txtSurname.Text.ToUpper().Trim();
-                string surnameReplace = surname.Replace("İĞÜŞÖÇ", "IGUSOC");
-                user.UserSurname = surnameReplace;
+                char[] letters = { 'ç', 'ğ', 'ı', 'ö', 'ş', 'ü', 'İ', 'Ç', 'Ğ', 'Ö', 'Ş', 'Ü' };
+                char[] replace = { 'c', 'g', 'i', 'o', 's', 'u', 'i', 'c', 'g', 'o', 's', 'u' };
 
+                for (int i = 0; i < txtSurname.Text.Length; i++)
+                {
+                    //harfleri dön
+                    for (int j = 0; j < letters.Length; j++)
+                    {
+                        //if the letter in userName is equal to the letter in letters array, replace it with the letter in the same index in the replace array
+                        if (txtSurname.Text[i] == letters[j])
+                        {
+                            txtSurname.Text = txtSurname.Text.Replace(txtSurname.Text[i], replace[j]);
+
+                        }
+                    }
+                }
+                txtSurname.Text = txtSurname.Text.ToUpper();
+                user.UserSurname = txtSurname.Text;
+                
                 //To Do : İngilizciye Çeivrelecek Yerler Var
             }
             #endregion
@@ -130,15 +146,13 @@ namespace UI
                 MessageBox.Show("Geçerli bir e-mail giriniz");
             }
             #endregion
-
             #region Password
 
             if (txtConfirmPassword.Text == txtPassword.Text)
             {
                 if (Methods.CheckForUpperCase(txtPassword.Text) && Methods.CheckForLowerCase(txtPassword.Text) && Methods.CheckForSpecialCharacter(txtPassword.Text))
                 {
-                    // user.UserPassword = Methods.Sha256_hash(txtPassword.Text);
-                    user.UserPassword = txtPassword.Text.Trim();
+                   user.UserPassword = txtPassword.Text.Trim();
                 }
                 else
                 {
@@ -153,7 +167,6 @@ namespace UI
             }
 
             #endregion
-
             #region BirthDay
             if (dtpDateofBirth.Value > DateTime.Now)
             {
@@ -169,8 +182,6 @@ namespace UI
             #endregion
             #region Weight
             user.UserWeight = nmrcWeight.Value;
-
-
             #endregion
             #region Height
             user.UserHeight = nmrcHeight.Value;
