@@ -17,7 +17,6 @@ namespace UI
     public partial class frmUserProfile : Form
     {
         CalorieTrackingContext context;
-        
         private DateTime time;
         private DateTime time2;
         private User _userProfile;
@@ -33,14 +32,15 @@ namespace UI
         {
             context = new CalorieTrackingContext();
 
-            lblUserInfo.Text = "İsim Soyisim :" + _userProfile.UserName + " " + _userProfile.UserSurname + "\n" + "Kilosu :" + _userProfile.UserWeight + "\n" + "Boyu :" + _userProfile.UserHeight + "\n" + "Doğum Tarihi :" + _userProfile.UserBirthDate.ToShortDateString();
+            lblUserInfo.Text = "İsim Soyisim :" + _userProfile.UserName + " " + _userProfile.UserSurname
+                               + "\n" + "Kilosu :" + _userProfile.UserWeight
+                               + "\n" + "Boyu :" + _userProfile.UserHeight
+                               + "\n" + "Doğum Tarihi :" + _userProfile.UserBirthDate.ToShortDateString();
 
             if (_userProfile.PhotoPath != null)
             {
                 pctbUserPicture.Image = Image.FromFile(_userProfile.PhotoPath);
             }
-
-            time = dtpDailyReport.Value.Date;
 
             var SecilenTarih = context.Meals.Where(x => x.UserId == _userProfile.UserID && x.MealDate == DateTime.Today).ToList();
 
@@ -52,12 +52,12 @@ namespace UI
             dgvDailyReport.Columns["MealDate"].HeaderText = "Meal Date";
             dgvDailyReport.Columns["TotalMealCalories"].HeaderText = "Total Meal Calories";
 
-            ComboBoxDoldur();
+            ComboBoxFill();
         }
 
         private void btnAddMeal_Click(object sender, EventArgs e)
         {
-            frmFoodAdd frm = new frmFoodAdd(_userProfile,this);
+            frmFoodAdd frm = new frmFoodAdd(_userProfile, this);
             frm.Show();
             this.Hide();
         }
@@ -83,13 +83,6 @@ namespace UI
             dgvDailyReport.Columns["MealDate"].HeaderText = "Meal Date";
             dgvDailyReport.Columns["TotalMealCalories"].HeaderText = "Total Meal Calories";
 
-
-            //foreach (var item in SecilenTarih)
-            //{
-
-            //     dgvDailyReport.DataSource = context.Meals.Where(x => x.UserId == _userProfile.UserID).Select(u => new { u.MealDate, u.MealName, u.TotalMealCalories }).ToList();
-
-            //}
         }
 
         private void rbWeekly_CheckedChanged(object sender, EventArgs e)
@@ -98,7 +91,6 @@ namespace UI
             time2 = dtpDailyReport.Value.Date.AddDays(-7);
 
             var SecilenTarih = context.Meals.Where(x => x.UserId == _userProfile.UserID && x.MealDate <= time && x.MealDate >= time2).OrderBy(x => x.MealDate).ToList();
-
 
             dgvWeeklyMonthlyReport.DataSource = SecilenTarih;
 
@@ -128,24 +120,18 @@ namespace UI
             dgvWeeklyMonthlyReport.Columns["TotalMealCalories"].HeaderText = "Total Meal Calories";
         }
 
-        private void ComboBoxDoldur()
-        {
-            cmbMealSelection.DataSource = Enum.GetNames(typeof(MealType)).ToList();
-            cmbMealSelection.SelectedIndex = -1;
-
-        }
-
         private void rbWeeklyComparison_CheckedChanged(object sender, EventArgs e)
         {
+            time = DateTime.Today;
+            time2 = DateTime.Today.AddDays(-7);
+
             if (cmbMealSelection.SelectedIndex == -1)
             {
                 MessageBox.Show("Lütfen Öğün Seçimi Yapınız");
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Breakfast)
             {
-                time = DateTime.Today;
-                time2 = DateTime.Today.AddDays(-7);
-
+                
                 var liste = context.Meals
                 .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Breakfast && m.MealDate <= time && m.MealDate >= time2)
                 .SelectMany(f => f.Foods)
@@ -155,18 +141,21 @@ namespace UI
                 var listeGruopBylı = liste.GroupBy(x => x.FoodName).Select(b => new { b.Key, Sum = b.Sum(s => s.Calorie), Count = b.Count() }).ToList();
 
                 dgvComparisonReport.DataSource = listeGruopBylı;
+                //dgvWeeklyMonthlyReport.Columns[0].HeaderText = "Food Name";
+                //dgvWeeklyMonthlyReport.Columns[2].HeaderText = "Total Calorie";
 
-                dgvWeeklyMonthlyReport.Columns[1].HeaderText = "Food Name";
-                dgvWeeklyMonthlyReport.Columns[2].HeaderText = "Total Calorie";
-
+                dgvComparisonReport.Columns[0].DataPropertyName = "Key";
+                dgvComparisonReport.Columns[0].HeaderText = "Food Name";
+                dgvComparisonReport.Columns[1].DataPropertyName = "Sum";
+                dgvComparisonReport.Columns[1].HeaderText = "Total Calorie";
+                dgvComparisonReport.Columns[2].DataPropertyName = "Count";
+                dgvComparisonReport.Columns[2].HeaderText = "Total Porsion";
 
 
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Dinner)
             {
-                time = DateTime.Today;
-                time2 = DateTime.Today.AddDays(-7);
-
+                
                 var liste = context.Meals
                     .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Dinner && m.MealDate <= time && m.MealDate >= time2)
                     .SelectMany(f => f.Foods)
@@ -178,19 +167,9 @@ namespace UI
                 dgvComparisonReport.DataSource = listeGruopBylı;
 
 
-
-
-                //dgvComparisonReport.DataSource = context.Meals
-                //    .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Dinner)
-                //    .SelectMany(f => f.Foods).Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName }).ToList();
-
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Snack)
             {
-                time = DateTime.Today;
-                time2 = DateTime.Today.AddDays(-7);
-
-
                 var liste = context.Meals
                     .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Snack && m.MealDate <= time && m.MealDate >= time2)
                     .SelectMany(f => f.Foods)
@@ -202,12 +181,9 @@ namespace UI
                 dgvComparisonReport.DataSource = listeGruopBylı;
 
 
-
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Lunch)
             {
-                time = DateTime.Today;
-                time2 = DateTime.Today.AddDays(-7);
 
                 var liste = context.Meals
                     .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Lunch && m.MealDate <= time && m.MealDate >= time2)
@@ -220,23 +196,20 @@ namespace UI
                 dgvComparisonReport.DataSource = listeGruopBylı;
 
             }
-
-
-
+            
         }
 
         private void rbmounthlyComparison_CheckedChanged(object sender, EventArgs e)
         {
+            time = DateTime.Today;
+            time2 = DateTime.Today.AddDays(-30);
+
             if (cmbMealSelection.SelectedIndex == -1)
             {
                 MessageBox.Show("Lütfen Öğün Seçimi Yapınız");
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Breakfast)
             {
-                time = DateTime.Today;
-                time2 = DateTime.Today.AddDays(-30);
-
-
                 var liste = context.Meals
                     .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Breakfast && m.MealDate <= time && m.MealDate >= time2)
                     .SelectMany(f => f.Foods)
@@ -247,17 +220,11 @@ namespace UI
 
                 dgvComparisonReport.DataSource = listeGruopBylı;
 
-                //dgvComparisonReport.DataSource = context.Meals
-                //    .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Breakfast)
-                //    .SelectMany(f => f.Foods).Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName }).ToList();
-
+                
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Dinner)
             {
-                time = DateTime.Today;
-                time2 = DateTime.Today.AddDays(-30);
-
-                var liste = context.Meals
+               var liste = context.Meals
                     .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Dinner && m.MealDate <= time && m.MealDate >= time2)
                     .SelectMany(f => f.Foods)
                     .Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName })
@@ -267,17 +234,11 @@ namespace UI
 
                 dgvComparisonReport.DataSource = listeGruopBylı;
 
-                //dgvComparisonReport.DataSource = context.Meals
-                //    .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Dinner)
-                //    .SelectMany(f => f.Foods).Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName }).ToList();
-
+                
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Snack)
             {
-                time = DateTime.Today;
-                time2 = DateTime.Today.AddDays(-30);
-
-                var liste = context.Meals
+               var liste = context.Meals
                     .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Snack && m.MealDate <= time && m.MealDate >= time2)
                     .SelectMany(f => f.Foods)
                     .Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName })
@@ -286,16 +247,12 @@ namespace UI
                 var listeGruopBylı = liste.GroupBy(x => x.FoodName).Select(b => new { b.Key, Sum = b.Sum(s => s.Calorie), Count = b.Count() }).ToList();
 
                 dgvComparisonReport.DataSource = listeGruopBylı;
-                //dgvComparisonReport.DataSource = context.Meals
-                //    .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Snack)
-                //    .SelectMany(f => f.Foods).Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName }).ToList();
+                
 
             }
             else if ((Entities.Enums.MealType)cmbMealSelection.SelectedIndex == MealType.Lunch)
             {
-                time = DateTime.Today;
-                time2 = DateTime.Today.AddDays(-30);
-
+                
                 var liste = context.Meals
                     .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Lunch && m.MealDate <= time && m.MealDate >= time2)
                     .SelectMany(f => f.Foods)
@@ -306,9 +263,6 @@ namespace UI
 
                 dgvComparisonReport.DataSource = listeGruopBylı;
 
-                //dgvComparisonReport.DataSource = context.Meals
-                //    .Where(m => m.UserId == _userProfile.UserID && m.MealName == MealType.Lunch)
-                //    .SelectMany(f => f.Foods).Select(a => new { a.FoodName, a.Porsion, a.Calorie, a.Category.CategoryName }).ToList();
             }
         }
 
@@ -323,6 +277,12 @@ namespace UI
                 rbmounthlyComparison_CheckedChanged(sender, e);
             }
 
+
+        }
+        private void ComboBoxFill()
+        {
+            cmbMealSelection.DataSource = Enum.GetNames(typeof(MealType)).ToList();
+            cmbMealSelection.SelectedIndex = -1;
 
         }
     }

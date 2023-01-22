@@ -46,9 +46,8 @@
             this.lblCaloriGoster = new System.Windows.Forms.Label();
             this.lblAlınanCaloriMiktarı = new System.Windows.Forms.Label();
             this.grpFoodAdd = new System.Windows.Forms.GroupBox();
-            this.dgvFoodAdd = new System.Windows.Forms.DataGridView();
             this.bntUpdtae = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.dgvFoodAdd = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pctbPicture)).BeginInit();
             this.grpFoodAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoodAdd)).BeginInit();
@@ -69,7 +68,7 @@
             this.pctbPicture.Location = new System.Drawing.Point(256, 14);
             this.pctbPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pctbPicture.Name = "pctbPicture";
-            this.pctbPicture.Size = new System.Drawing.Size(755, 162);
+            this.pctbPicture.Size = new System.Drawing.Size(692, 162);
             this.pctbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctbPicture.TabIndex = 1;
             this.pctbPicture.TabStop = false;
@@ -78,7 +77,7 @@
             // 
             this.lblChooseYourMeals.AutoSize = true;
             this.lblChooseYourMeals.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblChooseYourMeals.Location = new System.Drawing.Point(15, 29);
+            this.lblChooseYourMeals.Location = new System.Drawing.Point(5, 29);
             this.lblChooseYourMeals.Name = "lblChooseYourMeals";
             this.lblChooseYourMeals.Size = new System.Drawing.Size(116, 15);
             this.lblChooseYourMeals.TabIndex = 2;
@@ -87,7 +86,7 @@
             // cmbChooseYourMeals
             // 
             this.cmbChooseYourMeals.FormattingEnabled = true;
-            this.cmbChooseYourMeals.Location = new System.Drawing.Point(147, 21);
+            this.cmbChooseYourMeals.Location = new System.Drawing.Point(137, 21);
             this.cmbChooseYourMeals.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbChooseYourMeals.Name = "cmbChooseYourMeals";
             this.cmbChooseYourMeals.Size = new System.Drawing.Size(160, 23);
@@ -97,7 +96,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(38, 68);
+            this.label1.Location = new System.Drawing.Point(28, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 15);
             this.label1.TabIndex = 4;
@@ -106,7 +105,7 @@
             // cmbFoodCategory
             // 
             this.cmbFoodCategory.FormattingEnabled = true;
-            this.cmbFoodCategory.Location = new System.Drawing.Point(147, 60);
+            this.cmbFoodCategory.Location = new System.Drawing.Point(137, 60);
             this.cmbFoodCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFoodCategory.Name = "cmbFoodCategory";
             this.cmbFoodCategory.Size = new System.Drawing.Size(160, 23);
@@ -117,7 +116,7 @@
             // 
             this.lblFoods.AutoSize = true;
             this.lblFoods.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblFoods.Location = new System.Drawing.Point(86, 101);
+            this.lblFoods.Location = new System.Drawing.Point(76, 101);
             this.lblFoods.Name = "lblFoods";
             this.lblFoods.Size = new System.Drawing.Size(45, 15);
             this.lblFoods.TabIndex = 7;
@@ -126,7 +125,7 @@
             // btnAddYourOwnFood
             // 
             this.btnAddYourOwnFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddYourOwnFood.Location = new System.Drawing.Point(377, 59);
+            this.btnAddYourOwnFood.Location = new System.Drawing.Point(352, 59);
             this.btnAddYourOwnFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddYourOwnFood.Name = "btnAddYourOwnFood";
             this.btnAddYourOwnFood.Size = new System.Drawing.Size(148, 23);
@@ -138,10 +137,10 @@
             // btnBacktoUserForm
             // 
             this.btnBacktoUserForm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBacktoUserForm.Location = new System.Drawing.Point(370, 475);
+            this.btnBacktoUserForm.Location = new System.Drawing.Point(21, 521);
             this.btnBacktoUserForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBacktoUserForm.Name = "btnBacktoUserForm";
-            this.btnBacktoUserForm.Size = new System.Drawing.Size(229, 54);
+            this.btnBacktoUserForm.Size = new System.Drawing.Size(549, 54);
             this.btnBacktoUserForm.TabIndex = 12;
             this.btnBacktoUserForm.Text = "Back to User Form";
             this.btnBacktoUserForm.UseVisualStyleBackColor = true;
@@ -150,7 +149,7 @@
             // btnAddFood
             // 
             this.btnAddFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddFood.Location = new System.Drawing.Point(71, 475);
+            this.btnAddFood.Location = new System.Drawing.Point(21, 463);
             this.btnAddFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddFood.Name = "btnAddFood";
             this.btnAddFood.Size = new System.Drawing.Size(229, 54);
@@ -163,7 +162,7 @@
             // 
             this.lstbAllFoodName.FormattingEnabled = true;
             this.lstbAllFoodName.ItemHeight = 15;
-            this.lstbAllFoodName.Location = new System.Drawing.Point(147, 103);
+            this.lstbAllFoodName.Location = new System.Drawing.Point(137, 103);
             this.lstbAllFoodName.MultiColumn = true;
             this.lstbAllFoodName.Name = "lstbAllFoodName";
             this.lstbAllFoodName.Size = new System.Drawing.Size(162, 124);
@@ -173,16 +172,16 @@
             // 
             this.lstbFoodName.FormattingEnabled = true;
             this.lstbFoodName.ItemHeight = 15;
-            this.lstbFoodName.Location = new System.Drawing.Point(421, 101);
+            this.lstbFoodName.Location = new System.Drawing.Point(369, 101);
             this.lstbFoodName.Name = "lstbFoodName";
             this.lstbFoodName.Size = new System.Drawing.Size(162, 124);
             this.lstbFoodName.TabIndex = 15;
             // 
             // btnLsitBoxEkle
             // 
-            this.btnLsitBoxEkle.Location = new System.Drawing.Point(330, 128);
+            this.btnLsitBoxEkle.Location = new System.Drawing.Point(305, 128);
             this.btnLsitBoxEkle.Name = "btnLsitBoxEkle";
-            this.btnLsitBoxEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnLsitBoxEkle.Size = new System.Drawing.Size(52, 23);
             this.btnLsitBoxEkle.TabIndex = 16;
             this.btnLsitBoxEkle.Text = "-->";
             this.btnLsitBoxEkle.UseVisualStyleBackColor = true;
@@ -190,9 +189,9 @@
             // 
             // btnListBoxSil
             // 
-            this.btnListBoxSil.Location = new System.Drawing.Point(330, 172);
+            this.btnListBoxSil.Location = new System.Drawing.Point(305, 172);
             this.btnListBoxSil.Name = "btnListBoxSil";
-            this.btnListBoxSil.Size = new System.Drawing.Size(75, 23);
+            this.btnListBoxSil.Size = new System.Drawing.Size(52, 23);
             this.btnListBoxSil.TabIndex = 16;
             this.btnListBoxSil.Text = "<--";
             this.btnListBoxSil.UseVisualStyleBackColor = true;
@@ -201,7 +200,7 @@
             // lblCaloriGoster
             // 
             this.lblCaloriGoster.AutoSize = true;
-            this.lblCaloriGoster.Location = new System.Drawing.Point(511, 227);
+            this.lblCaloriGoster.Location = new System.Drawing.Point(459, 227);
             this.lblCaloriGoster.Name = "lblCaloriGoster";
             this.lblCaloriGoster.Size = new System.Drawing.Size(0, 15);
             this.lblCaloriGoster.TabIndex = 17;
@@ -209,7 +208,7 @@
             // lblAlınanCaloriMiktarı
             // 
             this.lblAlınanCaloriMiktarı.AutoSize = true;
-            this.lblAlınanCaloriMiktarı.Location = new System.Drawing.Point(421, 227);
+            this.lblAlınanCaloriMiktarı.Location = new System.Drawing.Point(369, 227);
             this.lblAlınanCaloriMiktarı.Name = "lblAlınanCaloriMiktarı";
             this.lblAlınanCaloriMiktarı.Size = new System.Drawing.Size(84, 15);
             this.lblAlınanCaloriMiktarı.TabIndex = 17;
@@ -231,44 +230,35 @@
             this.grpFoodAdd.Controls.Add(this.lstbAllFoodName);
             this.grpFoodAdd.Location = new System.Drawing.Point(16, 186);
             this.grpFoodAdd.Name = "grpFoodAdd";
-            this.grpFoodAdd.Size = new System.Drawing.Size(613, 272);
+            this.grpFoodAdd.Size = new System.Drawing.Size(554, 272);
             this.grpFoodAdd.TabIndex = 18;
             this.grpFoodAdd.TabStop = false;
+            // 
+            // bntUpdtae
+            // 
+            this.bntUpdtae.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bntUpdtae.Location = new System.Drawing.Point(360, 462);
+            this.bntUpdtae.Name = "bntUpdtae";
+            this.bntUpdtae.Size = new System.Drawing.Size(208, 54);
+            this.bntUpdtae.TabIndex = 20;
+            this.bntUpdtae.Text = "Food Update";
+            this.bntUpdtae.UseVisualStyleBackColor = true;
+            this.bntUpdtae.Click += new System.EventHandler(this.bntUpdtae_Click);
             // 
             // dgvFoodAdd
             // 
             this.dgvFoodAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFoodAdd.Location = new System.Drawing.Point(649, 196);
+            this.dgvFoodAdd.Location = new System.Drawing.Point(586, 195);
             this.dgvFoodAdd.Name = "dgvFoodAdd";
             this.dgvFoodAdd.RowTemplate.Height = 25;
-            this.dgvFoodAdd.Size = new System.Drawing.Size(362, 262);
+            this.dgvFoodAdd.Size = new System.Drawing.Size(362, 263);
             this.dgvFoodAdd.TabIndex = 19;
-            this.dgvFoodAdd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFoodAdd_CellClick);
-            // 
-            // bntUpdtae
-            // 
-            this.bntUpdtae.Location = new System.Drawing.Point(649, 475);
-            this.bntUpdtae.Name = "bntUpdtae";
-            this.bntUpdtae.Size = new System.Drawing.Size(139, 54);
-            this.bntUpdtae.TabIndex = 20;
-            this.bntUpdtae.Text = "Food Update";
-            this.bntUpdtae.UseVisualStyleBackColor = true;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Location = new System.Drawing.Point(892, 475);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(119, 54);
-            this.btnRemove.TabIndex = 21;
-            this.btnRemove.Text = "Food Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // frmFoodAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 582);
-            this.Controls.Add(this.btnRemove);
+            this.ClientSize = new System.Drawing.Size(962, 582);
             this.Controls.Add(this.bntUpdtae);
             this.Controls.Add(this.dgvFoodAdd);
             this.Controls.Add(this.grpFoodAdd);
@@ -307,8 +297,7 @@
         private Label lblCaloriGoster;
         private Label lblAlınanCaloriMiktarı;
         private GroupBox grpFoodAdd;
-        private DataGridView dgvFoodAdd;
         private Button bntUpdtae;
-        private Button btnRemove;
+        private DataGridView dgvFoodAdd;
     }
 }

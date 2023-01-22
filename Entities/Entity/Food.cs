@@ -17,11 +17,11 @@ namespace Entities.Entity
         public Porsion Porsion { get; set; }
         public int CategoryId { get; set; }
         
+
         //Navigation
         public Category Category { get; set; }
-
         public List<Meal> Meals { get; set; }
-        //public List<MealsAndFoods> Meals { get; set; }
+        
 
     }
 }
