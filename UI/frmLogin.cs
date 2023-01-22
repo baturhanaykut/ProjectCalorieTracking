@@ -6,11 +6,7 @@ namespace UI;
 public partial class frmLogin : Form
 {
     CalorieTrackingContext context;
-    //User _user;
-    //frmUserProfile _userProfileForm;
-
-
-
+    
     public frmLogin()
     {
         InitializeComponent();
@@ -19,9 +15,7 @@ public partial class frmLogin : Form
     private void LoginForm_Load(object sender, EventArgs e)
     {
         context = new CalorieTrackingContext();
-        //_user = new User();
-        //_profileForm = new UserProfileForm();
-
+        
     }
 
     private void btnLogIn_Click(object sender, EventArgs e)

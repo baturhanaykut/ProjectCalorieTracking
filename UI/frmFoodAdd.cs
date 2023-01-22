@@ -18,12 +18,10 @@ namespace UI
     public partial class frmFoodAdd : Form
     {
         CalorieTrackingContext context;
-        public frmUserProfile _frmUserProfile;
-        public User _user;
-        public Meal _meal;
-        public List<Food> _foods;
-        
-
+        frmUserProfile _frmUserProfile;
+        User _user;
+        Meal _meal;
+        List<Food> _foods;
         decimal _mealCalories;
         decimal _totalCalories;
 
@@ -39,13 +37,6 @@ namespace UI
             context = new CalorieTrackingContext();
             ComboBoxDoldur();
 
-        }
-        private void ComboBoxDoldur()
-        {
-            cmbChooseYourMeals.DataSource = Enum.GetNames(typeof(MealType)).ToList();
-            cmbChooseYourMeals.SelectedIndex = -1;
-            cmbFoodCategory.DataSource = context.Categories.Select(c => c.CategoryName).ToList();
-            cmbFoodCategory.SelectedIndex = -1;
         }
         private void btnAddYourOwnFood_Click(object sender, EventArgs e)
         {
@@ -65,10 +56,7 @@ namespace UI
         }
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            // Bu userın mealarını göstercem
-            // Userın mealırın içerisnden seçilen tarihteki meallerı bulucaz
-            // Bu mealların içinde öğün varmı 
-
+           
             var userMeals = context.Meals
                 .Where(x => x.UserId == _user.UserID)
                 .Where(y => y.MealDate == mntcldrCalender.SelectionStart.Date).ToList();
@@ -85,7 +73,7 @@ namespace UI
 
             if (aynımı)
             {
-                MessageBox.Show("Mevcut Öğün Ekleme Yapabilirsiniz");
+                MessageBox.Show("Bu öğünü daha önce eklediniz. Lüten Güncelleme Yapınız.");
                 ListBoxComboBoxTemizle();
             }
             else
@@ -125,6 +113,11 @@ namespace UI
         {
             _meal.MealDate = mntcldrCalender.SelectionStart.Date;
             _meal.TotalMealCalories = Convert.ToDecimal(lblCaloriGoster.Text);
+            
+            foreach (var item in lstbFoodName.Items)
+            {
+                _foods.Add((Food)item);
+            }
             _meal.Foods = _foods;
             _meal.UserId = _user.UserID;
             context.Meals.Add(_meal);
@@ -213,6 +206,10 @@ namespace UI
             }
         }
 
+        private void mntcldrCalender_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            FillDgvFoodAdd();
+        }
         void FillDgvFoodAdd()
         {
             var SecilenTarih = context.Meals.Where(x => x.UserId == _user.UserID && x.MealDate == mntcldrCalender.SelectionStart.Date).ToList();
@@ -225,17 +222,19 @@ namespace UI
             dgvFoodAdd.Columns["MealDate"].HeaderText = "Meal Date";
             dgvFoodAdd.Columns["TotalMealCalories"].HeaderText = "Total Meal Calories";
         }
-        private void mntcldrCalender_DateChanged(object sender, DateRangeEventArgs e)
+        private void ComboBoxDoldur()
         {
-            FillDgvFoodAdd();
+            cmbChooseYourMeals.DataSource = Enum.GetNames(typeof(MealType)).ToList();
+            cmbChooseYourMeals.SelectedIndex = -1;
+            cmbFoodCategory.DataSource = context.Categories.Select(c => c.CategoryName).ToList();
+            cmbFoodCategory.SelectedIndex = -1;
         }
-
-        private void dgvFoodAdd_CellClick(object sender, DataGridViewCellEventArgs e)
+        
+        private void bntUpdtae_Click(object sender, EventArgs e)
         {
-            //
-           // cmbChooseYourMeals.SelectedIndex = dgvFoodAdd.CurrentRow
-
-           
+            frmFoodUpdate frmFoodUpdate = new frmFoodUpdate(_user, this);
+            frmFoodUpdate.Show();
+            this.Hide();
         }
     }
 }
