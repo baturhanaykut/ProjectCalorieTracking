@@ -118,7 +118,7 @@ namespace UI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //Son Hali
+            //Son Hali-Deneme
             int mealID = Convert.ToInt32(dgvFoodUpdate.CurrentRow.Cells[0].Value);
             
            
