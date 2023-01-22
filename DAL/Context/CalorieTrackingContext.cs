@@ -27,7 +27,14 @@ namespace DAL.Context
             modelBuilder.ApplyConfiguration(new FoodMapping());
             modelBuilder.ApplyConfiguration(new MealMapping());
             modelBuilder.ApplyConfiguration(new UserMapping());
-            
+
+            //modelBuilder.Entity<Category>().HasData(
+            //    new Category { CategoryID = 1, CategoryName = "Et Ürünleri" },
+            //    new Category { CategoryID = 2, CategoryName = "Süt Ürünleri" });
+
+            //modelBuilder.Entity<Food>().HasData(
+            //new Food {Calorie = 200,CategoryId = 1,FoodID = 1,FoodName = "Biftek", ImagePath = @"‪C:\Users\batur\Desktop\Calori Programı Resim\Et Dürüm.jpg" });
+
         }
     }
 }
