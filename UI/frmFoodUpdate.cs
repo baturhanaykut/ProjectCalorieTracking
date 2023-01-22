@@ -118,8 +118,9 @@ namespace UI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            //Son Hali
             int mealID = Convert.ToInt32(dgvFoodUpdate.CurrentRow.Cells[0].Value);
-
+            
            
 
             if (mealID ==context.Meals.Where(x=>x.MealID == mealID).Select(x=>x.Foods).FirstOrDefault())
