@@ -40,8 +40,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnPictureAdd = new System.Windows.Forms.Button();
             this.grpFoodAdd = new System.Windows.Forms.GroupBox();
-            this.cmbBoxCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
+            this.cmbBoxCategory = new System.Windows.Forms.ComboBox();
             this.grpFoodAdd.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,15 +173,6 @@
             this.grpFoodAdd.TabStop = false;
             this.grpFoodAdd.Text = "groupBox1";
             // 
-            // cmbBoxCategory
-            // 
-            this.cmbBoxCategory.FormattingEnabled = true;
-            this.cmbBoxCategory.Location = new System.Drawing.Point(138, 28);
-            this.cmbBoxCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbBoxCategory.Name = "cmbBoxCategory";
-            this.cmbBoxCategory.Size = new System.Drawing.Size(204, 23);
-            this.cmbBoxCategory.TabIndex = 7;
-            // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
@@ -192,7 +183,16 @@
             this.lblCategory.TabIndex = 1;
             this.lblCategory.Text = "Category :";
             // 
-            // AddMealForm
+            // cmbBoxCategory
+            // 
+            this.cmbBoxCategory.FormattingEnabled = true;
+            this.cmbBoxCategory.Location = new System.Drawing.Point(138, 28);
+            this.cmbBoxCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbBoxCategory.Name = "cmbBoxCategory";
+            this.cmbBoxCategory.Size = new System.Drawing.Size(204, 23);
+            this.cmbBoxCategory.TabIndex = 7;
+            // 
+            // frmAddMeal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -201,7 +201,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnBack);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "AddMealForm";
+            this.Name = "frmAddMeal";
             this.Text = "AddMealForm";
             this.Load += new System.EventHandler(this.AddMealForm_Load);
             this.grpFoodAdd.ResumeLayout(false);

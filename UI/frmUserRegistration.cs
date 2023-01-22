@@ -235,7 +235,7 @@ namespace UI
             string photoPath = pbxUserPhoto.ImageLocation;
             user.PhotoPath = photoPath;
         }
-
+        
         #endregion
         #region PasswordCheck
 
