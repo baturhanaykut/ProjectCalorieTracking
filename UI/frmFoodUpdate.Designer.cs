@@ -36,6 +36,10 @@
             this.lstbFoodList = new System.Windows.Forms.ListBox();
             this.lstbEatsFood = new System.Windows.Forms.ListBox();
             this.btnEkle = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.lblCurrentCalorie = new System.Windows.Forms.Label();
+            this.lblCalorie = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoodUpdate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +56,11 @@
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(163, 234);
+            this.btnSil.Location = new System.Drawing.Point(136, 234);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(59, 26);
+            this.btnSil.Size = new System.Drawing.Size(124, 26);
             this.btnSil.TabIndex = 1;
-            this.btnSil.Text = "Sil";
+            this.btnSil.Text = "<- Food Delete";
             this.btnSil.UseVisualStyleBackColor = true;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
@@ -79,12 +83,13 @@
             // 
             // btnGeriDön
             // 
-            this.btnGeriDön.Location = new System.Drawing.Point(12, 329);
+            this.btnGeriDön.Location = new System.Drawing.Point(266, 385);
             this.btnGeriDön.Name = "btnGeriDön";
-            this.btnGeriDön.Size = new System.Drawing.Size(367, 49);
+            this.btnGeriDön.Size = new System.Drawing.Size(113, 49);
             this.btnGeriDön.TabIndex = 4;
             this.btnGeriDön.Text = "GeriDön";
             this.btnGeriDön.UseVisualStyleBackColor = true;
+            this.btnGeriDön.Click += new System.EventHandler(this.btnGeriDön_Click);
             // 
             // lstbFoodList
             // 
@@ -92,7 +97,7 @@
             this.lstbFoodList.ItemHeight = 15;
             this.lstbFoodList.Location = new System.Drawing.Point(12, 181);
             this.lstbFoodList.Name = "lstbFoodList";
-            this.lstbFoodList.Size = new System.Drawing.Size(145, 109);
+            this.lstbFoodList.Size = new System.Drawing.Size(118, 109);
             this.lstbFoodList.TabIndex = 5;
             // 
             // lstbEatsFood
@@ -100,26 +105,69 @@
             this.lstbEatsFood.CausesValidation = false;
             this.lstbEatsFood.FormattingEnabled = true;
             this.lstbEatsFood.ItemHeight = 15;
-            this.lstbEatsFood.Location = new System.Drawing.Point(234, 181);
+            this.lstbEatsFood.Location = new System.Drawing.Point(266, 181);
             this.lstbEatsFood.MultiColumn = true;
             this.lstbEatsFood.Name = "lstbEatsFood";
-            this.lstbEatsFood.Size = new System.Drawing.Size(145, 109);
+            this.lstbEatsFood.Size = new System.Drawing.Size(113, 109);
             this.lstbEatsFood.TabIndex = 5;
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(163, 205);
+            this.btnEkle.Location = new System.Drawing.Point(136, 205);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(59, 23);
+            this.btnEkle.Size = new System.Drawing.Size(124, 23);
             this.btnEkle.TabIndex = 6;
-            this.btnEkle.Text = "Ekle";
+            this.btnEkle.Text = "Food Add ->";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(12, 327);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(367, 23);
+            this.btnUpdate.TabIndex = 7;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(12, 356);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(367, 23);
+            this.btnRemove.TabIndex = 8;
+            this.btnRemove.Text = "Meal Delete";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // lblCurrentCalorie
+            // 
+            this.lblCurrentCalorie.AutoSize = true;
+            this.lblCurrentCalorie.Location = new System.Drawing.Point(173, 309);
+            this.lblCurrentCalorie.Name = "lblCurrentCalorie";
+            this.lblCurrentCalorie.Size = new System.Drawing.Size(87, 15);
+            this.lblCurrentCalorie.TabIndex = 9;
+            this.lblCurrentCalorie.Text = "Current Calorie";
+            // 
+            // lblCalorie
+            // 
+            this.lblCalorie.AutoSize = true;
+            this.lblCalorie.Location = new System.Drawing.Point(266, 309);
+            this.lblCalorie.Name = "lblCalorie";
+            this.lblCalorie.Size = new System.Drawing.Size(13, 15);
+            this.lblCalorie.TabIndex = 10;
+            this.lblCalorie.Text = "0";
             // 
             // frmFoodUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 387);
+            this.ClientSize = new System.Drawing.Size(408, 446);
+            this.Controls.Add(this.lblCalorie);
+            this.Controls.Add(this.lblCurrentCalorie);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.lstbEatsFood);
             this.Controls.Add(this.lstbFoodList);
@@ -133,6 +181,7 @@
             this.Load += new System.EventHandler(this.frmFoodUpdate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoodUpdate)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -148,5 +197,9 @@
         private Button btnEkle;
         private DataGridView dgvFoodUpdate;
         private DateTimePicker dtpFoodUpdate;
+        private Button btnUpdate;
+        private Button btnRemove;
+        private Label lblCurrentCalorie;
+        private Label lblCalorie;
     }
 }
