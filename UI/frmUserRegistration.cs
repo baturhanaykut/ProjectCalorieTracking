@@ -22,20 +22,17 @@ namespace UI
     {
         CalorieTrackingContext context;
         User user;
-
         public frmUserRegistration()
         {
             InitializeComponent();
         }
-
         private void UserRegistrationScreenForm_Load(object sender, EventArgs e)
         {
             user = new User();
             context = new CalorieTrackingContext();
-            ComboBoxDoldur();
+            ComboBoxFill();
         }
-
-        private void ComboBoxDoldur()
+        private void ComboBoxFill()
         {
             cmbGender.DataSource = Enum.GetNames(typeof(Gender)).ToList();
             cmbGender.SelectedIndex = -1;
@@ -46,7 +43,7 @@ namespace UI
             #region Name
             if (string.IsNullOrEmpty(txtName.Text))
             {
-                MessageBox.Show("İsim alanı boş bırakılamaz");
+                MessageBox.Show("Name field cannot be empty");
                 return;
             }
             else
@@ -59,26 +56,21 @@ namespace UI
                     //harfleri dön
                     for (int j = 0; j < letters.Length; j++)
                     {
-                        //if the letter in userName is equal to the letter in letters array, replace it with the letter in the same index in the replace array
                         if (txtName.Text[i] == letters[j])
                         {
                             txtName.Text = txtName.Text.Replace(txtName.Text[i], replace[j]);
-                           
                         }
                     }
                 }
                 txtName.Text = txtName.Text.ToUpper();
                 user.UserName = txtName.Text;
-
-                
-                //To Do : İngilizciye Çeivrelecek Yerler Var
             }
 
             #endregion
             #region Surname
             if (string.IsNullOrEmpty(txtSurname.Text))
             {
-                MessageBox.Show("Soyisim alanı boş bırakılamaz");
+                MessageBox.Show("Surname field cannot be empty");
                 return;
             }
             else
@@ -88,33 +80,26 @@ namespace UI
 
                 for (int i = 0; i < txtSurname.Text.Length; i++)
                 {
-                    //harfleri dön
                     for (int j = 0; j < letters.Length; j++)
                     {
-                        //if the letter in userName is equal to the letter in letters array, replace it with the letter in the same index in the replace array
                         if (txtSurname.Text[i] == letters[j])
                         {
                             txtSurname.Text = txtSurname.Text.Replace(txtSurname.Text[i], replace[j]);
-
                         }
                     }
                 }
                 txtSurname.Text = txtSurname.Text.ToUpper();
-                user.UserSurname = txtSurname.Text;
-                
-                //To Do : İngilizciye Çeivrelecek Yerler Var
+                user.UserSurname = txtSurname.Text; 
             }
             #endregion
             #region Gender
             if (cmbGender.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen Cinsiteyi Seçiniz");
+                MessageBox.Show("Please select gender");
                 return;
-                //To Do : İngilizciye Çeivrelecek Yerler Var
             }
             else
             {
-
                 if ((Entities.Enums.Gender)cmbGender.SelectedIndex == 0)
                 {
                     user.UserGender = Gender.Man;
@@ -128,13 +113,11 @@ namespace UI
                     user.UserGender = Gender.Unspecified;
                 }
             }
-
-
             #endregion
             #region Mail
             if (string.IsNullOrEmpty(txtEmail.Text))
             {
-                MessageBox.Show("Mail Alanı Boş Bırakılamaz");
+                MessageBox.Show("Mail field cannot be empty");
                 return;
             }
             else if (Methods.IsValidEmail(txtEmail.Text))
@@ -143,7 +126,7 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Geçerli bir e-mail giriniz");
+                MessageBox.Show("Please enter a valid e-mail");
             }
             #endregion
             #region Password
@@ -156,24 +139,21 @@ namespace UI
                 }
                 else
                 {
-                    MessageBox.Show("Paralo Kriterlere uymuyor");
+                    MessageBox.Show("Password does not meet the criteria");
                     return;
                 }
             }
             else
             {
-                MessageBox.Show("Parolar birbiyle eşleşmiyor");
+                MessageBox.Show("Passwords do not match");
                 return;
             }
-
             #endregion
             #region BirthDay
             if (dtpDateofBirth.Value > DateTime.Now)
             {
-                MessageBox.Show("Doğumtarihiniz bugün olamaz");
+                MessageBox.Show("Your date of birth cannot be today");
                 return;
-
-                //To Do : İngilizciye Çeivrelecek Yerler Var
             }
             else
             {
@@ -209,19 +189,16 @@ namespace UI
             #region DataBaseConnect
             context.Users.Add(user);
             context.SaveChanges();
-            MessageBox.Show("Kullanıcı Başarılı ile kaydedildi");
+            MessageBox.Show("User registration successful");
             this.Close();
             #endregion
-
-            //To Do : İngilizciye Çeivrelecek Yerler Var
-
         }
 
         #region PictureBoxAdd
         private void btnPictureAdd_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Lütfen bir fotoğraf seçiniz.";
+            ofd.Title = "Please select a photo";
             ofd.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|All Files (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -229,9 +206,8 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Fotoğraf seçilmedi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No photo selected", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            //save photopath to database
             string photoPath = pbxUserPhoto.ImageLocation;
             user.PhotoPath = photoPath;
         }
@@ -246,14 +222,11 @@ namespace UI
             lblPassSpec.ForeColor = Color.LightGray;
             lblPassUp.ForeColor = Color.LightGray;
 
-            //txtPassword.PasswordChar = '*';
             string password = txtPassword.Text.Trim();
             string numbers = "0123456789";
             string upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string lowerCase = "abcdefghijklmnopqrstuvwxyz";
             string specialCharacters = "!'£^#+$%&/*?\\-_|@~¨´,;.:`";
-
-
 
             if (password.Length < 6 || password.Length > 8)
             {
@@ -291,12 +264,10 @@ namespace UI
                 }
             }
         }
-
         private void txtConfirmPassword_TextChanged_1(object sender, EventArgs e)
         {
             PasswordCheck();
         }
-
         private void PasswordCheck()
         {
             if (txtPassword.Text == null)
@@ -305,27 +276,21 @@ namespace UI
             }
             else
             {
-                //txtPassword.PasswordChar = '*';
                 string paswordCheck = txtConfirmPassword.Text.Trim();
                 if (txtPassword.Text.Trim() != paswordCheck)
                 {
                     lblPasswordControl.ForeColor = Color.Red;
                     lblPasswordControl.Text = "Your password is not matched";
                     lblPasswordControl.Visible = true;
-
                 }
                 else
                 {
                     lblPasswordControl.ForeColor = Color.Green;
                     lblPasswordControl.Text = "Your password  is matched";
                     lblPasswordControl.Visible = true;
-
                 }
             }
         }
-
-
         #endregion
-
     }
 }

@@ -14,10 +14,8 @@ public partial class frmLogin : Form
 
     private void LoginForm_Load(object sender, EventArgs e)
     {
-        context = new CalorieTrackingContext();
-        
+        context = new CalorieTrackingContext(); 
     }
-
     private void btnLogIn_Click(object sender, EventArgs e)
     {
         User user = context.Users.FirstOrDefault(u => u.UserMail == txtEmail.Text && u.UserPassword == txtPassword.Text);
@@ -36,11 +34,9 @@ public partial class frmLogin : Form
         }
 
     }
-
     private void btnSignUp_Click(object sender, EventArgs e)
     {
         frmUserRegistration userRegistrationScreenForm = new frmUserRegistration();
         userRegistrationScreenForm.ShowDialog();
     }
-
 }

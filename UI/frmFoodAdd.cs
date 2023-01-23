@@ -35,7 +35,7 @@ namespace UI
         private void FoodAddForm_Load(object sender, EventArgs e)
         {
             context = new CalorieTrackingContext();
-            ComboBoxDoldur();
+            ComboBoxFill();
 
         }
         private void btnAddYourOwnFood_Click(object sender, EventArgs e)
@@ -52,38 +52,34 @@ namespace UI
 
             lstbAllFoodName.DisplayMember = "FoodName";
             lstbAllFoodName.ValueMember = "Calorie";
-
         }
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-           
             var userMeals = context.Meals
                 .Where(x => x.UserId == _user.UserID)
                 .Where(y => y.MealDate == mntcldrCalender.SelectionStart.Date).ToList();
 
-            bool aynımı = false;
+            bool isSame = false;
             foreach (var item in userMeals)
             {
                 if (item.MealName == (Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex)
                 {
-                    aynımı = true;
+                    isSame = true;
                     break;
                 }
             }
-
-            if (aynımı)
+            if (isSame)
             {
-                MessageBox.Show("Bu öğünü daha önce eklediniz. Lüten Güncelleme Yapınız.");
-                ListBoxComboBoxTemizle();
+                MessageBox.Show("You have already added this meal. Please update");
+                ListBoxComboBoxClear();
             }
             else
             {
-
                 _meal = new Meal();
 
                 if (cmbChooseYourMeals.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Lütfen Öğün Seçiniz");
+                    MessageBox.Show("Please select a meal");
                 }
                 else if ((Entities.Enums.MealType)cmbChooseYourMeals.SelectedIndex == MealType.Breakfast && _foods != null)
                 {
@@ -105,14 +101,13 @@ namespace UI
                     _meal.MealName = MealType.Snack;
                     FoodAdd();
                 }
-
             }
 
         }
         private void FoodAdd()
         {
             _meal.MealDate = mntcldrCalender.SelectionStart.Date;
-            _meal.TotalMealCalories = Convert.ToDecimal(lblCaloriGoster.Text);
+            _meal.TotalMealCalories = Convert.ToDecimal(lblCaloriValue.Text);
             
             foreach (var item in lstbFoodName.Items)
             {
@@ -123,10 +118,10 @@ namespace UI
             context.Meals.Add(_meal);
 
             context.SaveChanges();
-            MessageBox.Show("Yemeğiniz başarı ile eklendi");
+            MessageBox.Show("Food registration successful");
 
             _mealCalories = 0;
-            ListBoxComboBoxTemizle();
+            ListBoxComboBoxClear();
             FillDgvFoodAdd();
 
         }
@@ -135,35 +130,25 @@ namespace UI
             _frmUserProfile.Show();
             this.Close();
         }
-
-        private void btnLsitBoxEkle_Click(object sender, EventArgs e)
+        private void btnListBoxAdd_Click(object sender, EventArgs e)
         {
-
             if (lstbAllFoodName.SelectedItem == null)
             {
-                MessageBox.Show("Lütfen bir yemek ekleyeniz");
+                MessageBox.Show("Please add a food");
             }
             else
             {
                 lstbFoodName.Items.Add(lstbAllFoodName.SelectedItem);
                 lstbFoodName.DisplayMember = "FoodName";
                 lstbFoodName.ValueMember = "Calorie";
-
-                //lblCaloriGoster +=Food.
-                //add calories to label
                 Food food = (Food)lstbAllFoodName.SelectedItem;
                 _mealCalories += food.Calorie;
-                lblCaloriGoster.Text = _mealCalories.ToString();
-
-                //add foods to list
+                lblCaloriValue.Text = _mealCalories.ToString();
                 _foods = new List<Food>();
                 _foods.Add(food);
-
             }
-
         }
-
-        private void ListBoxComboBoxTemizle()
+        private void ListBoxComboBoxClear()
         {
             foreach (Control item in grpFoodAdd.Controls)
             {
@@ -173,48 +158,44 @@ namespace UI
                 }
             }
             lstbFoodName.Items.Clear();
-            lblCaloriGoster.Text = " ";
+            lblCaloriValue.Text = " ";
         }
-
-        private void btnListBoxSil_Click(object sender, EventArgs e)
+        private void btnListBoxDelete_Click(object sender, EventArgs e)
         {
             Food food = (Food)lstbFoodName.SelectedItem;
 
             if (lstbFoodName.SelectedItem != null)
             {
                 lstbFoodName.Items.Remove(lstbFoodName.SelectedItem);
-                //remove food from list
                 _foods.Remove(food);
-
                 if (food != null)
                 {
                     _mealCalories -= food.Calorie;
-                    lblCaloriGoster.Text = _mealCalories.ToString();
+                    lblCaloriValue.Text = _mealCalories.ToString();
                 }
                 else
                 {
                     _mealCalories -= 0;
-                    lblCaloriGoster.Text = "0";
+                    lblCaloriValue.Text = "0";
                     System.Media.SystemSounds.Beep.Play();
                 }
             }
             else
             {
-                MessageBox.Show("Lütfen listeden bir besin seçiniz", "Hata", MessageBoxButtons.OK,
+                MessageBox.Show("Please select a food from the list", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
             }
         }
-
         private void mntcldrCalender_DateChanged(object sender, DateRangeEventArgs e)
         {
             FillDgvFoodAdd();
         }
         void FillDgvFoodAdd()
         {
-            var SecilenTarih = context.Meals.Where(x => x.UserId == _user.UserID && x.MealDate == mntcldrCalender.SelectionStart.Date).ToList();
+            var selectedDate = context.Meals.Where(x => x.UserId == _user.UserID && x.MealDate == mntcldrCalender.SelectionStart.Date).ToList();
             
-            dgvFoodAdd.DataSource = SecilenTarih;
+            dgvFoodAdd.DataSource = selectedDate;
             dgvFoodAdd.Columns["UserId"].Visible = false;
             dgvFoodAdd.Columns["MealID"].Visible = false;
             dgvFoodAdd.Columns["User"].Visible = false;
@@ -222,15 +203,14 @@ namespace UI
             dgvFoodAdd.Columns["MealDate"].HeaderText = "Meal Date";
             dgvFoodAdd.Columns["TotalMealCalories"].HeaderText = "Total Meal Calories";
         }
-        private void ComboBoxDoldur()
+        private void ComboBoxFill()
         {
             cmbChooseYourMeals.DataSource = Enum.GetNames(typeof(MealType)).ToList();
             cmbChooseYourMeals.SelectedIndex = -1;
             cmbFoodCategory.DataSource = context.Categories.Select(c => c.CategoryName).ToList();
             cmbFoodCategory.SelectedIndex = -1;
         }
-        
-        private void bntUpdtae_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender,EventArgs e)
         {
             frmFoodUpdate frmFoodUpdate = new frmFoodUpdate(_user, this);
             frmFoodUpdate.Show();

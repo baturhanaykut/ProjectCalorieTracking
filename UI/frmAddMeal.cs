@@ -15,26 +15,21 @@ namespace UI
 {
     public partial class frmAddMeal : Form
     {
-        //private User _user;
         CalorieTrackingContext context;
         Food food;
-        //frmFoodAdd _frm;
         private  frmFoodAdd _frmFoodAdd;
         public frmAddMeal(frmFoodAdd frmFoddAdd)
         {
             InitializeComponent();
             _frmFoodAdd = frmFoddAdd;
         }
-
         private void AddMealForm_Load(object sender, EventArgs e)
         {
-            //_frm = new frmFoodAdd(_user);
             context = new CalorieTrackingContext();
             food = new Food();
-            ComboBoxDoldur();
+            ComboBoxFill();
         }
-
-        private void ComboBoxDoldur()
+        private void ComboBoxFill()
         {
             cmbPorsion.DataSource = Enum.GetNames(typeof(Porsion)).ToList();
             cmbPorsion.SelectedIndex = -1;
@@ -47,7 +42,7 @@ namespace UI
 
             if (cmbBoxCategory.SelectedIndex==-1)
             {
-                MessageBox.Show("Lütfen Kategori Seçimi Yapınız");
+                MessageBox.Show("Please select a category");
                 return;
             }
             else
@@ -61,7 +56,7 @@ namespace UI
 
             if (string.IsNullOrEmpty(txtFoodName.Text))
             {
-                MessageBox.Show("Lütfen yemek ismini giriniz");
+                MessageBox.Show("Please enter the name of the food");
             }
             else
             {
@@ -72,7 +67,7 @@ namespace UI
             #region Porsion
             if (cmbPorsion.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen Porsiyon Seçimi Yapınız");
+                MessageBox.Show("Please select serving");
                 return;
             }
             else
@@ -100,7 +95,7 @@ namespace UI
 
             if (string.IsNullOrEmpty((txtCalorie.Text)))
             {
-                MessageBox.Show("Calori Değerini Lütfen Giriniz");
+                MessageBox.Show("Please enter calori value");
                 return;
             }
             else
@@ -121,7 +116,7 @@ namespace UI
             #region DatabaseConnect
             context.Foods.Add(food);
             context.SaveChanges();
-            MessageBox.Show("Yemek başarılı ile kaydedil");
+            MessageBox.Show("Food registration successful");
 
             ButtonClear();
             food = new Food();
@@ -148,8 +143,6 @@ namespace UI
 
         private void txtCalorie_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Sayı harici giriş yapmayı engelle
-
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
@@ -164,7 +157,7 @@ namespace UI
         private void btnPictureAdd_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Lütfen bir fotograf seçiniz";
+            ofd.Title = "Please select a photo";
             ofd.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|All Files (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -173,7 +166,7 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Fotograf Seçilmedi", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Photo not selected", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

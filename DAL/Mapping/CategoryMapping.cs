@@ -23,13 +23,7 @@ namespace DAL.Mapping
 
             builder.HasMany(c => c.Foods)
                 .WithOne(f=>f.Category)
-                .HasForeignKey(f=>f.CategoryId);
-
-                
-
-
-            
-                
+                .HasForeignKey(f=>f.CategoryId); 
         }
     }
 }

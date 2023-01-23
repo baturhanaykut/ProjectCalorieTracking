@@ -19,14 +19,12 @@ namespace UI
         CalorieTrackingContext context;
         frmUserProfile _frmUserProfile;
         User _user;
-
         public frmStatistics(User user, frmUserProfile frmUserProfile)
         {
             InitializeComponent();
             _user = user;
             _frmUserProfile = frmUserProfile;
         }
-
         private void StatisticsForm_Load(object sender, EventArgs e)
         {
             context = new CalorieTrackingContext();
@@ -43,8 +41,6 @@ namespace UI
                       {
                           MealName = m.MealName,
                           TotalMealCalories = m.TotalMealCalories,
-                          
-
                       }).ToList();
 
             dgvChooseFood.DataSource = result;
@@ -57,7 +53,6 @@ namespace UI
             _frmUserProfile.Show();
             this.Close();
         }
-
         private void cmbChooseMeal_SelectedIndexChanged(object sender, EventArgs e)
         {
 

@@ -34,8 +34,6 @@ namespace DAL.Mapping
                 .IsRequired()
                 .HasColumnType("nvarchar")
                 .HasMaxLength(15);
-            
-
         }
     }
 }

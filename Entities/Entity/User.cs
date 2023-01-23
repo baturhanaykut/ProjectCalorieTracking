@@ -9,8 +9,6 @@ namespace Entities.Entity
 {
     public class User
     {
-       
-
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserSurname { get; set; }
@@ -25,8 +23,5 @@ namespace Entities.Entity
 
         //Navigation
         public List<Meal> Meals { get; set; }
-        
-
-        
     }
 }

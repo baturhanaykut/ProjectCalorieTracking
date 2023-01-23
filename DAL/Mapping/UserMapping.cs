@@ -63,11 +63,6 @@ namespace DAL.Mapping
 
             builder.Property(u => u.PhotoPath)
                 .IsRequired();
-
-
-
-
-
         }
     }
 }
