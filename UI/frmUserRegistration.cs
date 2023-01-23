@@ -127,6 +127,7 @@ namespace UI
             else
             {
                 MessageBox.Show("Please enter a valid e-mail");
+                return;
             }
             #endregion
             #region Password

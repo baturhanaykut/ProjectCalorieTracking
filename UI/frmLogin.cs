@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using DAL.Context;
 using Entities.Entity;
 
@@ -6,10 +7,12 @@ namespace UI;
 public partial class frmLogin : Form
 {
     CalorieTrackingContext context;
+    frmInfo _frmInfo;
     
     public frmLogin()
     {
         InitializeComponent();
+        _frmInfo = new frmInfo();
     }
 
     private void LoginForm_Load(object sender, EventArgs e)
@@ -38,5 +41,24 @@ public partial class frmLogin : Form
     {
         frmUserRegistration userRegistrationScreenForm = new frmUserRegistration();
         userRegistrationScreenForm.ShowDialog();
+    }
+
+    private void chkbShowPasword_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chkbShowPasword.Checked)
+        {
+            txtPassword.PasswordChar = '\0';
+        }
+        else
+        {
+            txtPassword.PasswordChar = '*';
+        }
+    }
+
+    private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        //this.Hide();
+        _frmInfo.ShowDialog();
+
     }
 }

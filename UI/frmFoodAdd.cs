@@ -212,7 +212,7 @@ namespace UI
         }
         private void btnUpdate_Click(object sender,EventArgs e)
         {
-            frmFoodUpdate frmFoodUpdate = new frmFoodUpdate(_user, this);
+            frmFoodUpdate frmFoodUpdate = new frmFoodUpdate(_user, this,_frmUserProfile);
             frmFoodUpdate.Show();
             this.Hide();
         }

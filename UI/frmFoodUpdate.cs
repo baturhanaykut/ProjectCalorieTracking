@@ -24,11 +24,12 @@ namespace UI
         decimal totalCalori = 0;
         decimal mealCalori = 0;
 
-        public frmFoodUpdate(User user, frmFoodAdd frmFoodAdd)
+        public frmFoodUpdate(User user, frmFoodAdd frmFoodAdd,frmUserProfile frmUserProfile)
         {
             InitializeComponent();
             _user = user;
             _frmFoodAdd = frmFoodAdd;
+            _frmUserProfile = frmUserProfile;
             _foods = new List<Food>();
         }
         private void frmFoodUpdate_Load(object sender, EventArgs e)
