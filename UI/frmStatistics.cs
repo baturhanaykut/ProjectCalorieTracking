@@ -33,7 +33,7 @@ namespace UI
             cmbChooseMeal.DataSource = Enum.GetNames(typeof(MealType)).ToArray();
 
             var result = (from f in context.Foods
-                join fm in context.Meals on f.FoodsFoodID equals fm.
+                join fm in context.Meals on fm 
 
             dgvChooseFood.DataSource = result;
 
