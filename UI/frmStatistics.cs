@@ -32,16 +32,8 @@ namespace UI
             cmbChooseMeal.Items.Clear();
             cmbChooseMeal.DataSource = Enum.GetNames(typeof(MealType)).ToArray();
 
-            var result = (from m in context.Meals
-                join f in context.Foods on m.MealID equals f.FoodID
-                //join u in context.Users on m.UserId equals u.UserID
-                where m.MealName == MealType.Breakfast
-                select
-                      new
-                      {
-                          MealName = m.MealName,
-                          TotalMealCalories = m.TotalMealCalories,
-                      }).ToList();
+            var result = (from f in context.Foods
+                join fm in context.Meals on fm 
 
             dgvChooseFood.DataSource = result;
 
@@ -55,63 +47,7 @@ namespace UI
         }
         private void cmbChooseMeal_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //    List<Meal> meals = new List<Meal>();
-            //    List<Food> foods = new List<Food>();
-
-            //    //if (cmbChooseMeal.SelectedIndex == 0)
-            //    //{
-            //    //    var result = (from m in context.Meals
-            //    //                  join f in context.Foods on m.MealID equals f.FoodID
-            //    //                  join u in context.Users on m.UserId equals u.UserID
-            //    //                  select new
-            //    //                  {
-            //    //                      MealID = m.MealID,
-            //    //                      FoodName = f.FoodName,
-            //    //                      FoodCalorie = f.Calorie,
-            //    //                      UserName = u.UserName,
-            //    //                  }).ToList();
-
-            //    //    dgvChooseFood.DataSource = result;
-
-
-            //    //}
-            //    //else if (cmbChooseMeal.SelectedIndex == 1)
-            //    //{
-            //    //    meals = context.Meals
-            //    //        .Where(x => x.MealName == MealType.Lunch)
-            //    //        .ToList();
-            //    //    dgvChooseFood.DataSource = meals;
-            //    //}
-            //    //else if (cmbChooseMeal.SelectedIndex == 2)
-            //    //{
-            //    //    meals = context.Meals
-            //    //        .Where(x => x.MealName == MealType.Snack)
-            //    //        .ToList();
-            //    //    dgvChooseFood.DataSource = meals;
-            //    //}
-            //    //else if (cmbChooseMeal.SelectedIndex == 3)
-            //    //{
-            //    //    meals = context.Meals
-            //    //        .Where(x => x.MealName == MealType.Dinner)
-            //    //        .ToList();
-            //    //    dgvChooseFood.DataSource = meals;
-            //    //}
-            //    ////foreach (var meal in meals)
-            //    ////{
-            //    ////    foreach (var food in meals)
-            //    ////    {
-            //    ////        foods.Add(food);
-            //    ////    }
-            //    ////}
-
-            //var dataList = foods
-            //    .GroupBy(x=>x.FoodName).Select(z=> new
-            //    {
-            //        Name =z.Key,
-
-            //    } ).ToList();
-            //    //dgvChooseFood.DataSource = dataList;
+            
 
         }
 

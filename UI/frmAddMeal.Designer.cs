@@ -49,9 +49,9 @@
             // 
             this.lblFoodName.AutoSize = true;
             this.lblFoodName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblFoodName.Location = new System.Drawing.Point(37, 83);
+            this.lblFoodName.Location = new System.Drawing.Point(32, 62);
             this.lblFoodName.Name = "lblFoodName";
-            this.lblFoodName.Size = new System.Drawing.Size(98, 20);
+            this.lblFoodName.Size = new System.Drawing.Size(76, 15);
             this.lblFoodName.TabIndex = 0;
             this.lblFoodName.Text = "Food Name :";
             // 
@@ -59,9 +59,9 @@
             // 
             this.lblPorsion.AutoSize = true;
             this.lblPorsion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPorsion.Location = new System.Drawing.Point(66, 128);
+            this.lblPorsion.Location = new System.Drawing.Point(58, 96);
             this.lblPorsion.Name = "lblPorsion";
-            this.lblPorsion.Size = new System.Drawing.Size(70, 20);
+            this.lblPorsion.Size = new System.Drawing.Size(54, 15);
             this.lblPorsion.TabIndex = 1;
             this.lblPorsion.Text = "Porsion :";
             // 
@@ -69,9 +69,9 @@
             // 
             this.lblCalorie.AutoSize = true;
             this.lblCalorie.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCalorie.Location = new System.Drawing.Point(70, 184);
+            this.lblCalorie.Location = new System.Drawing.Point(61, 138);
             this.lblCalorie.Name = "lblCalorie";
-            this.lblCalorie.Size = new System.Drawing.Size(65, 20);
+            this.lblCalorie.Size = new System.Drawing.Size(51, 15);
             this.lblCalorie.TabIndex = 2;
             this.lblCalorie.Text = "Calorie :";
             // 
@@ -79,48 +79,53 @@
             // 
             this.lblImagePath.AutoSize = true;
             this.lblImagePath.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblImagePath.Location = new System.Drawing.Point(42, 240);
+            this.lblImagePath.Location = new System.Drawing.Point(37, 180);
             this.lblImagePath.Name = "lblImagePath";
-            this.lblImagePath.Size = new System.Drawing.Size(93, 20);
+            this.lblImagePath.Size = new System.Drawing.Size(73, 15);
             this.lblImagePath.TabIndex = 3;
             this.lblImagePath.Text = "Image Path:";
             // 
             // txtFoodName
             // 
-            this.txtFoodName.Location = new System.Drawing.Point(158, 83);
+            this.txtFoodName.Location = new System.Drawing.Point(138, 62);
+            this.txtFoodName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFoodName.Name = "txtFoodName";
-            this.txtFoodName.Size = new System.Drawing.Size(233, 27);
+            this.txtFoodName.Size = new System.Drawing.Size(204, 23);
             this.txtFoodName.TabIndex = 4;
             // 
             // txtImagePath
             // 
-            this.txtImagePath.Location = new System.Drawing.Point(158, 237);
+            this.txtImagePath.Location = new System.Drawing.Point(138, 178);
+            this.txtImagePath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtImagePath.Name = "txtImagePath";
-            this.txtImagePath.Size = new System.Drawing.Size(118, 27);
+            this.txtImagePath.Size = new System.Drawing.Size(104, 23);
             this.txtImagePath.TabIndex = 5;
             // 
             // txtCalorie
             // 
-            this.txtCalorie.Location = new System.Drawing.Point(158, 184);
+            this.txtCalorie.Location = new System.Drawing.Point(138, 138);
+            this.txtCalorie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCalorie.Name = "txtCalorie";
-            this.txtCalorie.Size = new System.Drawing.Size(233, 27);
+            this.txtCalorie.Size = new System.Drawing.Size(204, 23);
             this.txtCalorie.TabIndex = 6;
             this.txtCalorie.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCalorie_KeyPress);
             // 
             // cmbPorsion
             // 
             this.cmbPorsion.FormattingEnabled = true;
-            this.cmbPorsion.Location = new System.Drawing.Point(158, 128);
+            this.cmbPorsion.Location = new System.Drawing.Point(138, 96);
+            this.cmbPorsion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPorsion.Name = "cmbPorsion";
-            this.cmbPorsion.Size = new System.Drawing.Size(233, 28);
+            this.cmbPorsion.Size = new System.Drawing.Size(204, 23);
             this.cmbPorsion.TabIndex = 7;
             // 
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(27, 339);
+            this.btnBack.Location = new System.Drawing.Point(24, 254);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(162, 83);
+            this.btnBack.Size = new System.Drawing.Size(142, 62);
             this.btnBack.TabIndex = 8;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -129,9 +134,10 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.Location = new System.Drawing.Point(286, 339);
+            this.btnAdd.Location = new System.Drawing.Point(250, 254);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(162, 83);
+            this.btnAdd.Size = new System.Drawing.Size(142, 62);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -140,10 +146,9 @@
             // btnPictureAdd
             // 
             this.btnPictureAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPictureAdd.Location = new System.Drawing.Point(296, 240);
-            this.btnPictureAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnPictureAdd.Location = new System.Drawing.Point(259, 180);
             this.btnPictureAdd.Name = "btnPictureAdd";
-            this.btnPictureAdd.Size = new System.Drawing.Size(95, 31);
+            this.btnPictureAdd.Size = new System.Drawing.Size(83, 23);
             this.btnPictureAdd.TabIndex = 10;
             this.btnPictureAdd.Text = "Picture Add";
             this.btnPictureAdd.UseVisualStyleBackColor = true;
@@ -162,11 +167,9 @@
             this.grpFoodAdd.Controls.Add(this.txtFoodName);
             this.grpFoodAdd.Controls.Add(this.txtCalorie);
             this.grpFoodAdd.Controls.Add(this.txtImagePath);
-            this.grpFoodAdd.Location = new System.Drawing.Point(27, 16);
-            this.grpFoodAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grpFoodAdd.Location = new System.Drawing.Point(24, 12);
             this.grpFoodAdd.Name = "grpFoodAdd";
-            this.grpFoodAdd.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grpFoodAdd.Size = new System.Drawing.Size(421, 316);
+            this.grpFoodAdd.Size = new System.Drawing.Size(368, 237);
             this.grpFoodAdd.TabIndex = 11;
             this.grpFoodAdd.TabStop = false;
             this.grpFoodAdd.Text = "Food Add";
@@ -175,28 +178,31 @@
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCategory.Location = new System.Drawing.Point(54, 37);
+            this.lblCategory.Location = new System.Drawing.Point(47, 28);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(81, 20);
+            this.lblCategory.Size = new System.Drawing.Size(63, 15);
             this.lblCategory.TabIndex = 1;
             this.lblCategory.Text = "Category :";
             // 
             // cmbBoxCategory
             // 
             this.cmbBoxCategory.FormattingEnabled = true;
-            this.cmbBoxCategory.Location = new System.Drawing.Point(158, 37);
+            this.cmbBoxCategory.Location = new System.Drawing.Point(138, 28);
+            this.cmbBoxCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbBoxCategory.Name = "cmbBoxCategory";
-            this.cmbBoxCategory.Size = new System.Drawing.Size(233, 28);
+            this.cmbBoxCategory.Size = new System.Drawing.Size(204, 23);
             this.cmbBoxCategory.TabIndex = 7;
             // 
             // frmAddMeal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 529);
+            this.ClientSize = new System.Drawing.Size(415, 397);
+            this.ControlBox = false;
             this.Controls.Add(this.grpFoodAdd);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnBack);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmAddMeal";
             this.Text = "AddMealForm";
             this.Load += new System.EventHandler(this.AddMealForm_Load);

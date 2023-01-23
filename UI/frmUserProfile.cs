@@ -30,7 +30,7 @@ namespace UI
         {
             context = new CalorieTrackingContext();
 
-            lblUserInfo.Text = "Name Surname :" + _userProfile.UserName + " " + _userProfile.UserSurname
+            lblUserInfo.Text = "Name Surname :" + "\n" + _userProfile.UserName + " " + _userProfile.UserSurname
                                + "\n" + "Weight :" + _userProfile.UserWeight
                                + "\n" + "Height :" + _userProfile.UserHeight
                                + "\n" + "BirthDate :" + _userProfile.UserBirthDate.ToShortDateString();
@@ -249,6 +249,20 @@ namespace UI
         {
             cmbMealSelection.DataSource = Enum.GetNames(typeof(MealType)).ToList();
             cmbMealSelection.SelectedIndex = -1;
+        }
+
+        private void frmUserProfile_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Çıkmak istediğinize emin misiniz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }
