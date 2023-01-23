@@ -30,9 +30,6 @@ namespace DAL.Mapping
                 .HasColumnType("decimal(10,2)");
             builder.HasMany(f => f.Foods)
                 .WithMany(m => m.Meals);
-
-
-
         }
     }
 }

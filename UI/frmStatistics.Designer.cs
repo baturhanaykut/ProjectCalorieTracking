@@ -44,40 +44,38 @@
             // cmbChooseMeal
             // 
             this.cmbChooseMeal.FormattingEnabled = true;
-            this.cmbChooseMeal.Location = new System.Drawing.Point(172, 27);
-            this.cmbChooseMeal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbChooseMeal.Location = new System.Drawing.Point(226, 44);
             this.cmbChooseMeal.Name = "cmbChooseMeal";
-            this.cmbChooseMeal.Size = new System.Drawing.Size(182, 23);
+            this.cmbChooseMeal.Size = new System.Drawing.Size(207, 28);
             this.cmbChooseMeal.TabIndex = 0;
             this.cmbChooseMeal.SelectedIndexChanged += new System.EventHandler(this.cmbChooseMeal_SelectedIndexChanged);
             // 
             // dgvChooseFood
             // 
             this.dgvChooseFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvChooseFood.Location = new System.Drawing.Point(26, 158);
-            this.dgvChooseFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvChooseFood.Location = new System.Drawing.Point(30, 211);
             this.dgvChooseFood.Name = "dgvChooseFood";
             this.dgvChooseFood.RowHeadersWidth = 51;
             this.dgvChooseFood.RowTemplate.Height = 29;
-            this.dgvChooseFood.Size = new System.Drawing.Size(476, 146);
+            this.dgvChooseFood.Size = new System.Drawing.Size(544, 195);
             this.dgvChooseFood.TabIndex = 1;
             // 
             // dgvMealReport
             // 
             this.dgvMealReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMealReport.Location = new System.Drawing.Point(26, 322);
-            this.dgvMealReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvMealReport.Location = new System.Drawing.Point(30, 429);
             this.dgvMealReport.Name = "dgvMealReport";
             this.dgvMealReport.RowHeadersWidth = 51;
             this.dgvMealReport.RowTemplate.Height = 29;
-            this.dgvMealReport.Size = new System.Drawing.Size(476, 189);
+            this.dgvMealReport.Size = new System.Drawing.Size(544, 252);
             this.dgvMealReport.TabIndex = 2;
             // 
             // btnBackUserForm
             // 
-            this.btnBackUserForm.Location = new System.Drawing.Point(341, 516);
+            this.btnBackUserForm.Location = new System.Drawing.Point(390, 688);
+            this.btnBackUserForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBackUserForm.Name = "btnBackUserForm";
-            this.btnBackUserForm.Size = new System.Drawing.Size(161, 35);
+            this.btnBackUserForm.Size = new System.Drawing.Size(184, 47);
             this.btnBackUserForm.TabIndex = 3;
             this.btnBackUserForm.Text = "Back To User Form";
             this.btnBackUserForm.UseVisualStyleBackColor = true;
@@ -86,9 +84,10 @@
             // rbtnBreakfast
             // 
             this.rbtnBreakfast.AutoSize = true;
-            this.rbtnBreakfast.Location = new System.Drawing.Point(26, 75);
+            this.rbtnBreakfast.Location = new System.Drawing.Point(30, 100);
+            this.rbtnBreakfast.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnBreakfast.Name = "rbtnBreakfast";
-            this.rbtnBreakfast.Size = new System.Drawing.Size(73, 19);
+            this.rbtnBreakfast.Size = new System.Drawing.Size(91, 24);
             this.rbtnBreakfast.TabIndex = 4;
             this.rbtnBreakfast.TabStop = true;
             this.rbtnBreakfast.Text = "Breakfast";
@@ -97,9 +96,10 @@
             // rbtnLunch
             // 
             this.rbtnLunch.AutoSize = true;
-            this.rbtnLunch.Location = new System.Drawing.Point(105, 75);
+            this.rbtnLunch.Location = new System.Drawing.Point(120, 100);
+            this.rbtnLunch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnLunch.Name = "rbtnLunch";
-            this.rbtnLunch.Size = new System.Drawing.Size(58, 19);
+            this.rbtnLunch.Size = new System.Drawing.Size(68, 24);
             this.rbtnLunch.TabIndex = 5;
             this.rbtnLunch.TabStop = true;
             this.rbtnLunch.Text = "Lunch";
@@ -108,9 +108,10 @@
             // rbtnSnack
             // 
             this.rbtnSnack.AutoSize = true;
-            this.rbtnSnack.Location = new System.Drawing.Point(172, 75);
+            this.rbtnSnack.Location = new System.Drawing.Point(197, 100);
+            this.rbtnSnack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnSnack.Name = "rbtnSnack";
-            this.rbtnSnack.Size = new System.Drawing.Size(56, 19);
+            this.rbtnSnack.Size = new System.Drawing.Size(68, 24);
             this.rbtnSnack.TabIndex = 6;
             this.rbtnSnack.TabStop = true;
             this.rbtnSnack.Text = "Snack";
@@ -119,9 +120,10 @@
             // rbtnDinner
             // 
             this.rbtnDinner.AutoSize = true;
-            this.rbtnDinner.Location = new System.Drawing.Point(234, 75);
+            this.rbtnDinner.Location = new System.Drawing.Point(267, 100);
+            this.rbtnDinner.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbtnDinner.Name = "rbtnDinner";
-            this.rbtnDinner.Size = new System.Drawing.Size(60, 19);
+            this.rbtnDinner.Size = new System.Drawing.Size(74, 24);
             this.rbtnDinner.TabIndex = 7;
             this.rbtnDinner.TabStop = true;
             this.rbtnDinner.Text = "Dinner";
@@ -130,17 +132,17 @@
             // lblChooseCategory
             // 
             this.lblChooseCategory.AutoSize = true;
-            this.lblChooseCategory.Location = new System.Drawing.Point(26, 35);
+            this.lblChooseCategory.Location = new System.Drawing.Point(30, 47);
             this.lblChooseCategory.Name = "lblChooseCategory";
-            this.lblChooseCategory.Size = new System.Drawing.Size(140, 15);
+            this.lblChooseCategory.Size = new System.Drawing.Size(175, 20);
             this.lblChooseCategory.TabIndex = 8;
             this.lblChooseCategory.Text = "Please Choose Category :";
             // 
             // frmStatistics
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 576);
+            this.ClientSize = new System.Drawing.Size(617, 768);
             this.Controls.Add(this.lblChooseCategory);
             this.Controls.Add(this.rbtnDinner);
             this.Controls.Add(this.rbtnSnack);
@@ -150,7 +152,6 @@
             this.Controls.Add(this.dgvMealReport);
             this.Controls.Add(this.dgvChooseFood);
             this.Controls.Add(this.cmbChooseMeal);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmStatistics";
             this.Text = "StatisticsForm";
             this.Load += new System.EventHandler(this.StatisticsForm_Load);

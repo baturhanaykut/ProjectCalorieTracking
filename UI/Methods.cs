@@ -27,7 +27,6 @@ internal static class Methods
             return false;
         }
     }
-
     internal static bool CheckForLowerCase(string sifre)
     {
         int count = 0;
@@ -48,7 +47,6 @@ internal static class Methods
             return false;
         }
     }
-
     internal static bool CheckForSpecialCharacter(string sifre)
     {
         string specialCharacters = "!@#$%^&*()_+{}|:<>?-=[];',./";
@@ -69,14 +67,11 @@ internal static class Methods
             return false;
         }
     }
-
-
     public static bool IsValidEmail(string email)
     {
         Regex emailRegex = new Regex(@"^([\w.-]+)@([\w-]+)((.(\w){2,3})+)$", RegexOptions.IgnoreCase);
         return emailRegex.IsMatch(email);
     }
-
     public static string Sha256_hash(string sifre)
     {
         using (SHA256 hash = SHA256Managed.Create())
@@ -84,10 +79,6 @@ internal static class Methods
             return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(sifre)).Select(l => l.ToString("X2")));
         }
     }
-
-   
-
-
 }
 
 

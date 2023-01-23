@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace Entities.Entity
 {
     public class Food
-    {
-       
+    {  
         public int FoodID { get; set; }
         public string FoodName { get; set; }
         public decimal Calorie { get; set; }
@@ -21,7 +20,5 @@ namespace Entities.Entity
         //Navigation
         public Category Category { get; set; }
         public List<Meal> Meals { get; set; }
-        
-
     }
 }

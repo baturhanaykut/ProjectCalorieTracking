@@ -31,7 +31,6 @@ namespace UI
             _frmFoodAdd = frmFoodAdd;
             _foods = new List<Food>();
         }
-
         private void frmFoodUpdate_Load(object sender, EventArgs e)
         {
             context = new CalorieTrackingContext();
@@ -42,7 +41,6 @@ namespace UI
             dgvFoodUpdate.DataSource = ChoeseTime;
             ComboBoxFill();
         }
-
         private void dtpFoodUpdate_ValueChanged(object sender, EventArgs e)
         {
             var ChoeseTime =
@@ -50,7 +48,6 @@ namespace UI
                     .Select(u => new { u.MealID, u.MealName, u.TotalMealCalories }).ToList();
             dgvFoodUpdate.DataSource = ChoeseTime;
         }
-
         private void cmbFoodCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             lstbFoodList.DataSource = context.Foods
@@ -90,8 +87,7 @@ namespace UI
 
             lblCalorie.Text = _meal.TotalMealCalories.ToString();
         }
-
-        private void btnSil_Click(object sender, EventArgs e)
+        private void btnFoodDelete_Click(object sender, EventArgs e)
         {
             totalCalori = Convert.ToDecimal(lblCalorie.Text);
             if (lstbEatsFood != null)
@@ -103,36 +99,32 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Silinicek yemek bulunamadı.");
+                MessageBox.Show("No food found to delete");
             }
 
             if (totalCalori <= 0)
             {
-                btnSil.Enabled = false;
+                btnFoodDelete.Enabled = false;
             }
 
             lblCalorie.Text = totalCalori.ToString();
         }
-
-        private void btnEkle_Click(object sender, EventArgs e)
+        private void btnFoodAdd_Click(object sender, EventArgs e)
         {
             totalCalori = Convert.ToDecimal(lblCalorie.Text);
             if (lstbFoodList.SelectedItem == null)
             {
-                MessageBox.Show("Lütfen bir kategori seçiniz.");
+                MessageBox.Show("Please select a category");
             }
             else
             {
                 Food food = (Food)lstbFoodList.SelectedItem;
                 lstbEatsFood.Items.Add(lstbFoodList.SelectedItem);
-                //lstbEatsFood.DisplayMember = "FoodName";
-                //lstbEatsFood.ValueMember = "Calorie";
                 totalCalori += food.Calorie;
                 _foods.Add(food);
                 lblCalorie.Text = totalCalori.ToString();
             }
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int mealID = Convert.ToInt32(dgvFoodUpdate.CurrentRow.Cells[0].Value);
@@ -155,12 +147,9 @@ namespace UI
             _meal.TotalMealCalories = Convert.ToDecimal(lblCalorie.Text);
             //context.Meals.Update(_meal);
             context.SaveChanges();
-            MessageBox.Show("Başarılı bir şekilde kaydeltimiştir");
-            
+            MessageBox.Show("Registration successful"); 
         }
-
-
-        private void btnRemove_Click(object sender, EventArgs e)
+        private void btnMealDelete_Click(object sender, EventArgs e)
         {
             int mealId = Convert.ToInt32(dgvFoodUpdate.CurrentRow.Cells[0].Value);
 
@@ -170,14 +159,12 @@ namespace UI
                 context.Meals.Remove(meal);
             }
             context.SaveChanges();
-            MessageBox.Show("Öğün Başarı ile silinmiştir");
+            MessageBox.Show("Meal deleted successfully");
 
             dgvFoodUpdate.DataSource = context.Meals.Where(m => m.UserId == _user.UserID && m.MealDate == dtpFoodUpdate.Value.Date)
                 .Select(u => new { u.MealID, u.MealName, u.TotalMealCalories }).ToList();
-
         }
-
-        private void btnGeriDön_Click(object sender, EventArgs e)
+        private void btnGoBack_Click(object sender, EventArgs e)
         {
             _frmFoodAdd = new frmFoodAdd(_user, _frmUserProfile);
             _frmFoodAdd.Show();
