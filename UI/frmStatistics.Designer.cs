@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbChooseMeal = new System.Windows.Forms.ComboBox();
+            this.cmbChooseCategory = new System.Windows.Forms.ComboBox();
             this.dgvChooseFood = new System.Windows.Forms.DataGridView();
             this.dgvMealReport = new System.Windows.Forms.DataGridView();
             this.btnBackUserForm = new System.Windows.Forms.Button();
@@ -37,24 +37,27 @@
             this.rbtnSnack = new System.Windows.Forms.RadioButton();
             this.rbtnDinner = new System.Windows.Forms.RadioButton();
             this.lblChooseCategory = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChooseFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMealReport)).BeginInit();
             this.SuspendLayout();
             // 
-            // cmbChooseMeal
+            // cmbChooseCategory
             // 
-            this.cmbChooseMeal.FormattingEnabled = true;
-            this.cmbChooseMeal.Location = new System.Drawing.Point(198, 33);
-            this.cmbChooseMeal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbChooseMeal.Name = "cmbChooseMeal";
-            this.cmbChooseMeal.Size = new System.Drawing.Size(182, 23);
-            this.cmbChooseMeal.TabIndex = 0;
-            this.cmbChooseMeal.SelectedIndexChanged += new System.EventHandler(this.cmbChooseMeal_SelectedIndexChanged);
+            this.cmbChooseCategory.FormattingEnabled = true;
+            this.cmbChooseCategory.Location = new System.Drawing.Point(196, 77);
+            this.cmbChooseCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbChooseCategory.Name = "cmbChooseCategory";
+            this.cmbChooseCategory.Size = new System.Drawing.Size(182, 23);
+            this.cmbChooseCategory.TabIndex = 0;
+            this.cmbChooseCategory.SelectedIndexChanged += new System.EventHandler(this.cmbChooseCategory_SelectedIndexChanged);
             // 
             // dgvChooseFood
             // 
+            this.dgvChooseFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvChooseFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvChooseFood.Location = new System.Drawing.Point(26, 158);
+            this.dgvChooseFood.Location = new System.Drawing.Point(26, 135);
             this.dgvChooseFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvChooseFood.Name = "dgvChooseFood";
             this.dgvChooseFood.RowHeadersWidth = 51;
@@ -64,6 +67,7 @@
             // 
             // dgvMealReport
             // 
+            this.dgvMealReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMealReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMealReport.Location = new System.Drawing.Point(26, 322);
             this.dgvMealReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -86,18 +90,20 @@
             // rbtnBreakfast
             // 
             this.rbtnBreakfast.AutoSize = true;
-            this.rbtnBreakfast.Location = new System.Drawing.Point(26, 75);
+            this.rbtnBreakfast.Location = new System.Drawing.Point(27, 39);
             this.rbtnBreakfast.Name = "rbtnBreakfast";
             this.rbtnBreakfast.Size = new System.Drawing.Size(73, 19);
             this.rbtnBreakfast.TabIndex = 4;
             this.rbtnBreakfast.TabStop = true;
             this.rbtnBreakfast.Text = "Breakfast";
             this.rbtnBreakfast.UseVisualStyleBackColor = true;
+            //this.rbtnBreakfast.CheckedChanged += new System.EventHandler(this.rbtnBreakfast_CheckedChanged);
+            this.rbtnBreakfast.Click += new System.EventHandler(this.rbtnBreakfast_Click);
             // 
             // rbtnLunch
             // 
             this.rbtnLunch.AutoSize = true;
-            this.rbtnLunch.Location = new System.Drawing.Point(105, 75);
+            this.rbtnLunch.Location = new System.Drawing.Point(111, 39);
             this.rbtnLunch.Name = "rbtnLunch";
             this.rbtnLunch.Size = new System.Drawing.Size(58, 19);
             this.rbtnLunch.TabIndex = 5;
@@ -108,7 +114,7 @@
             // rbtnSnack
             // 
             this.rbtnSnack.AutoSize = true;
-            this.rbtnSnack.Location = new System.Drawing.Point(172, 75);
+            this.rbtnSnack.Location = new System.Drawing.Point(178, 39);
             this.rbtnSnack.Name = "rbtnSnack";
             this.rbtnSnack.Size = new System.Drawing.Size(56, 19);
             this.rbtnSnack.TabIndex = 6;
@@ -119,7 +125,7 @@
             // rbtnDinner
             // 
             this.rbtnDinner.AutoSize = true;
-            this.rbtnDinner.Location = new System.Drawing.Point(234, 75);
+            this.rbtnDinner.Location = new System.Drawing.Point(240, 39);
             this.rbtnDinner.Name = "rbtnDinner";
             this.rbtnDinner.Size = new System.Drawing.Size(60, 19);
             this.rbtnDinner.TabIndex = 7;
@@ -130,11 +136,29 @@
             // lblChooseCategory
             // 
             this.lblChooseCategory.AutoSize = true;
-            this.lblChooseCategory.Location = new System.Drawing.Point(26, 35);
+            this.lblChooseCategory.Location = new System.Drawing.Point(24, 79);
             this.lblChooseCategory.Name = "lblChooseCategory";
             this.lblChooseCategory.Size = new System.Drawing.Size(140, 15);
             this.lblChooseCategory.TabIndex = 8;
             this.lblChooseCategory.Text = "Please Choose Category :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(176, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Öğünlere Göre Yenilen Yemekler";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 305);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(123, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "En Çok Yenilen Yemek";
             // 
             // frmStatistics
             // 
@@ -142,6 +166,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 576);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblChooseCategory);
             this.Controls.Add(this.rbtnDinner);
             this.Controls.Add(this.rbtnSnack);
@@ -150,7 +176,7 @@
             this.Controls.Add(this.btnBackUserForm);
             this.Controls.Add(this.dgvMealReport);
             this.Controls.Add(this.dgvChooseFood);
-            this.Controls.Add(this.cmbChooseMeal);
+            this.Controls.Add(this.cmbChooseCategory);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmStatistics";
             this.Text = "StatisticsForm";
@@ -164,7 +190,7 @@
 
         #endregion
 
-        private ComboBox cmbChooseMeal;
+        private ComboBox cmbChooseCategory;
         private DataGridView dgvChooseFood;
         private DataGridView dgvMealReport;
         private Button btnBackUserForm;
@@ -173,5 +199,7 @@
         private RadioButton rbtnSnack;
         private RadioButton rbtnDinner;
         private Label lblChooseCategory;
+        private Label label1;
+        private Label label2;
     }
 }
