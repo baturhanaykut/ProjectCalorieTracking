@@ -70,6 +70,7 @@ namespace UI
                 dgvMealReport.Columns[1].HeaderText = "Total Calorie";
                 dgvMealReport.Columns[2].DataPropertyName = "Count";
                 dgvMealReport.Columns[2].HeaderText = "Total Porsion";
+
             }
             else if (rbtnDinner.Checked == true)
             {
@@ -125,6 +126,8 @@ namespace UI
                 dgvMealReport.DataSource = listMostEatenMeal;
 
             }
+           
+            
         }
 
 
