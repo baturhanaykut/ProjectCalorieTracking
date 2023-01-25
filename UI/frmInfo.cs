@@ -16,5 +16,26 @@ namespace UI
         {
             InitializeComponent();
         }
+        
+        private void chbLanguange_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbLanguange.Checked == true)
+            {
+                pbxİnfoTr.Visible = false;
+                pbxİnfoEng.Visible = true;
+            }
+            else if (chbLanguange.Checked == false)
+            {
+                pbxİnfoTr.Visible = true;
+                pbxİnfoEng.Visible = false;
+            }
+            
+
+        }
+
+        private void frmInfo_Load_1(object sender, EventArgs e)
+        {
+            pbxİnfoTr.Visible = true;
+        }
     }
 }
