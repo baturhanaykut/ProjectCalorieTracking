@@ -125,6 +125,8 @@ namespace UI
                 _foods.Add(food);
                 lblCalorie.Text = totalCalori.ToString();
             }
+
+            btnFoodDelete.Enabled = true;
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {

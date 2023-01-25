@@ -97,8 +97,6 @@
             this.rbtnBreakfast.TabStop = true;
             this.rbtnBreakfast.Text = "Breakfast";
             this.rbtnBreakfast.UseVisualStyleBackColor = true;
-            //this.rbtnBreakfast.CheckedChanged += new System.EventHandler(this.rbtnBreakfast_CheckedChanged);
-            this.rbtnBreakfast.Click += new System.EventHandler(this.rbtnBreakfast_Click);
             // 
             // rbtnLunch
             // 
@@ -147,24 +145,24 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(22, 115);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 15);
+            this.label1.Size = new System.Drawing.Size(125, 15);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Öğünlere Göre Yenilen Yemekler";
+            this.label1.Text = "Foods Eatten by Meals";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(27, 305);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 15);
+            this.label2.Size = new System.Drawing.Size(96, 15);
             this.label2.TabIndex = 9;
-            this.label2.Text = "En Çok Yenilen Yemek";
+            this.label2.Text = "Most Eaten Food";
             // 
             // frmStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 576);
+            this.ClientSize = new System.Drawing.Size(527, 576);
             this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

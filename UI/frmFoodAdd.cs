@@ -25,7 +25,7 @@ namespace UI
         decimal _mealCalories;
         decimal _totalCalories;
 
-        public frmFoodAdd(User user,frmUserProfile frmUserProfile)
+        public frmFoodAdd(User user, frmUserProfile frmUserProfile)
         {
             InitializeComponent();
             _user = user;
@@ -36,6 +36,7 @@ namespace UI
         {
             context = new CalorieTrackingContext();
             ComboBoxFill();
+            FillDgvFoodAdd();
 
         }
         private void btnAddYourOwnFood_Click(object sender, EventArgs e)
@@ -108,15 +109,16 @@ namespace UI
         {
             _meal.MealDate = mntcldrCalender.SelectionStart.Date;
             _meal.TotalMealCalories = Convert.ToDecimal(lblCaloriValue.Text);
-            
+
             foreach (var item in lstbFoodName.Items)
             {
                 _foods.Add((Food)item);
+                
             }
+            
             _meal.Foods = _foods;
             _meal.UserId = _user.UserID;
             context.Meals.Add(_meal);
-
             context.SaveChanges();
             MessageBox.Show("Food registration successful");
 
@@ -194,7 +196,7 @@ namespace UI
         void FillDgvFoodAdd()
         {
             var selectedDate = context.Meals.Where(x => x.UserId == _user.UserID && x.MealDate == mntcldrCalender.SelectionStart.Date).ToList();
-            
+
             dgvFoodAdd.DataSource = selectedDate;
             dgvFoodAdd.Columns["UserId"].Visible = false;
             dgvFoodAdd.Columns["MealID"].Visible = false;
@@ -210,9 +212,9 @@ namespace UI
             cmbFoodCategory.DataSource = context.Categories.Select(c => c.CategoryName).ToList();
             cmbFoodCategory.SelectedIndex = -1;
         }
-        private void btnUpdate_Click(object sender,EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            frmFoodUpdate frmFoodUpdate = new frmFoodUpdate(_user, this,_frmUserProfile);
+            frmFoodUpdate frmFoodUpdate = new frmFoodUpdate(_user, this, _frmUserProfile);
             frmFoodUpdate.Show();
             this.Hide();
         }
